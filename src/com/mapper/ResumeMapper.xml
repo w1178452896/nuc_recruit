@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.ResumeMapper">
+
+ <select id="findAllResume" parameterType="int" resultType="Resume">
+  	select * from resume where uid=#{uid}
+ </select>
+ 
+ <insert id="insertResume" parameterType="Resume">
+	 insert into resume(uid,name,sex,nativePlace,birthday,education,workYear,phone,idCard,mail,city,personPic,introduction,positionApplied,exceptedCity,exceptedSalary,postscript) 
+	 values(#{uid},#{name},#{sex},#{nativePlace},#{birthday},#{education},#{workYear},#{phone},#{idCard},#{mail},#{city},#{personPic},#{introduction},#{positionApplied},#{exceptedCity},#{exceptedSalary},#{postscript})
+ </insert>
+ 
+ <delete id="deleteResume" parameterType="int">
+	 delete from resume where uid=#{uid}
+ </delete>
+ 
+ <update id="updateResume" parameterType="Resume">
+ 	 update resume set name=#{name},sex=#{sex},nativePlace=#{nativePlace},
+ 	 birthday=#{birthday},education=#{education},workYear=#{workYear},phone=#{phone},
+	 idCard=#{idCard},mail=#{mail},city=#{city},personPic=#{personPic},
+	 introduction=#{introduction},positionApplied=#{positionApplied},
+	 exceptedCity=#{exceptedCity},exceptedSalary=#{exceptedSalary},postscript=#{postscript} 
+	 where uid=#{uid}
+ </update>
+ <!-- 条件查询简历 -->
+ <sql id="findResumeSql">
+ 	(select * from 
+ 	        ( select *,
+ 	         <foreach collection="key" item="item"  separator=" ">
+         	     case when concat(name,sex,nativePlace,birthday,phone,mail,city,introduction,exceptedCity,positionApplied,postscript) like "%${item}%" then 1 else 0 end+
+             </foreach>
+ 	             case when concat(name,sex,nativePlace,birthday,phone,mail,city,introduction,exceptedCity,positionApplied,postscript) like "---" then 1 else 0 end as sum from resume) t
+ 	 <where>
+ 	 	<if test="education!=null and education !=''">
+ 	 		and t.education=#{education}
+ 	 	</if>
+ 	 	<if test="workYear!=null and workYear!=''">
+ 	 		and t.workYear=#{workYear}
+ 	 	</if>
+ 	 	<if test="exceptedCity!=null and exceptedCity!=''">
+ 	 		and t.exceptedCity=#{exceptedCity}
+ 	 	</if>
+ 	 	<if test="positionApplied!=null and positionApplied!=''">
+ 	 		and t.positionApplied like "%${positionApplied}%"
+ 	 	</if>
+ 	 	and t.sum>0
+ 	 </where>
+ 	   )tmp
+ </sql>
+ <select id="findResume" parameterType="ResumeCondition" resultType="Resume">
+ 	 select uid,name,sex,nativePlace,birthday,
+ 	   (
+		case education 
+		when '1' then '大专'
+		when '2' then '本科'
+		when '3' then '硕士'
+		when '4' then '博士'
+		when '5' then '其他'
+		else '其他' end) education,
+		(
+		case  workYear 
+		when '1' then '应届毕业生'
+		when '2' then '3年及其以下'
+		when '3' then '3-5年'
+		when '4' then '5-10年'
+		when '5' then '10年以上'
+		else '10年以上' end) workYear,
+		exceptedSalary,positionApplied,
+		introduction,exceptedCity
+ 	 from
+ 	 <include refid="findResumeSql"/>
+ 	 order by sum desc limit #{startIndex} ,#{pageSize}       
+ </select>
+ <select id="findResumeCount" parameterType="ResumeCondition" resultType="int">
+	 select count(*) from
+	 <include refid="findResumeSql"/>
+</select>
+</mapper>

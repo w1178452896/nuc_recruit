@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.EducationExperienceMapper">
+
+ <select id="findAllEducationExperience" parameterType="int" resultType="EducationExperience">
+  	select * from education_experience where uid=#{uid}
+ </select>
+ 
+ <insert id="insertEducationExperience" parameterType="EducationExperience">
+	insert into education_experience
+	(uid,school,college,major,education,stime,etime,statement) values
+	(#{uid},#{school},#{college},#{major},#{education},#{stime},#{etime},
+	#{statement})
+ </insert>
+ 
+ <delete id="deleteEducationExperience" parameterType="int">
+	 delete from education_experience where eid=#{eid}
+ </delete>
+ 
+ <update id="updateEducationExperience" parameterType="EducationExperience">
+ 	 update education_experience 
+ 	 set school=#{school},college=#{college},major=#{major},education=#{education},
+ 	 stime=#{stime},etime=#{etime},statement=#{statement} where uid=#{uid}
+ </update>
+</mapper>

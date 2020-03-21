@@ -1,0 +1,152 @@
+/*!/common/static/css/base.less*/
+*
+{
+    outline: 0;
+}body
+{
+    font-family: 'Hiragino Sans GB','Microsoft Yahei',SimSun,Arial,'Helvetica Neue',Helvetica;
+    font-size: 14px;
+
+    margin: 0;
+    padding: 0;
+
+    word-wrap: break-word;
+
+    color: #333;
+
+    -webkit-font-smoothing: antialiased;
+}article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary
+{
+    display: block;
+}progress
+{
+    display: inline-block;
+
+    vertical-align: baseline;
+}a
+{
+    text-decoration: none;
+
+    color: #555;
+    background-color: transparent;
+}a:hover
+{
+    color: #00b38a;
+}h1,
+h2,
+h3,
+h4
+{
+    font-weight: 400;
+
+    margin: 10px 0;
+}p
+{
+    margin: 0;
+}p + p
+{
+    margin-top: 10px;
+}img
+{
+    display: inline-block;
+
+    vertical-align: top;
+
+    border: 0;
+}button,
+input,
+optgroup,
+select,
+textarea
+{
+    font-family: 'Hiragino Sans GB','Microsoft Yahei',SimSun,Arial,'Helvetica Neue',Helvetica;
+
+    margin: 0;
+    padding: 0;
+
+    border: 1px solid #ededed;
+}textarea
+{
+    overflow: auto;
+}label,
+select,
+button,
+input[type=button],
+input[type=reset],
+input[type=submit],
+input[type=radio],
+input[type=checkbox],
+input[type=file]
+{
+    cursor: pointer;
+}input[type=text],
+input[type=password],
+textarea
+{
+    font-family: 'Microsoft Yahei',SimSun,Arial,'Helvetica Neue',Helvetica;
+}table
+{
+    border-spacing: 0;
+    border-collapse: collapse;
+}th,
+td
+{
+    padding: 0;
+}strong
+{
+    font-weight: 400;
+}em,
+i
+{
+    font-style: normal;
+}dl,
+dt,
+dd
+{
+    margin: 0;
+}::selection
+{
+    color: #fff;
+    background-color: #00b38a;
+}::-moz-selection
+{
+    color: #fff;
+    background-color: #00b38a;
+}ul,
+ol
+{
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}.fl
+{
+    float: left;
+}.fr
+{
+    float: right;
+}.clearfix
+{
+    *zoom: 1;
+}.clearfix:before,
+.clearfix:after
+{
+    display: table;
+
+    content: '';
+}.clearfix:after
+{
+    clear: both;
+}

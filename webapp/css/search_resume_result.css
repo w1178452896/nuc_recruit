@@ -1,0 +1,60 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0; }
+
+.title {
+  width: 1100px;
+  height: 80px;
+  font-size: 30px;
+  line-height: 80px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
+  background-color: #535981; }
+
+.form {
+  background-color: #fcb1ae;
+  width: 1100px;
+  height: 120px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-top: 15px; }
+
+table {
+  background-color: rgba(87, 84, 98, 0.09);
+  width: 1100px;
+  height: auto;
+  margin: 30px auto 0 auto;
+  padding-top: 15px; }
+
+tr {
+  height: 110px;
+  width: 1100px;
+  padding-bottom: 2px;
+  /*background-color: #1b6d85;*/ }
+
+/*圆形头像*/
+#circle {
+  width: 90px;
+  height: 90px;
+  background: url(../images/pic.jpg);
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px; }
+
+.page {
+  background-color: rgba(87, 84, 98, 0.09);
+  width: 1100px;
+  height: 70px;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  padding: 18px; }
+
+.page span.left {
+    float: left;
+}
+
+.page span.right {
+    float: right;
+}

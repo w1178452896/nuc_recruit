@@ -1,0 +1,23 @@
+.main-content {
+  width: 1100px;
+  height: auto;
+  margin: 0 auto 60px auto; }
+
+.bar {
+  padding-top: 30px; 
+  font-size:18px;
+  }
+ 
+.classify{
+	padding-top:10px;
+}
+
+.content {
+  width: 100%;
+  height: auto;
+  margin-top: 40px; 
+  font-size:16px;
+  }
+
+thead {
+  background-color: #fcb1ae; }

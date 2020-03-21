@@ -1,0 +1,8 @@
+*.class
+/bin
+/webapp/META-INF/classes/
+.classpath
+.mymetadata
+.project
+/src/config/
+*.properties

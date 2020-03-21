@@ -1,0 +1,189 @@
+﻿.city-box
+{
+    position: absolute;
+    z-index: 9999;
+
+    width: 400px;
+    padding: 15px 15px 5px;
+
+    border: 2px solid #c9cbce;
+    background: #fff;
+}
+.city-box:before,
+.city-box:after
+{
+    position: absolute;
+    z-index: 9998;
+    left: 20px;
+
+    display: block;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+
+    border-width: 10px;
+    border-style: solid;
+}
+.rightSelector:before,
+.rightSelector:after
+{
+    left: 280px;
+}
+.city-box:before
+{
+    z-index: 10001;
+    top: -17px;
+
+    border-color: transparent transparent #fff;
+}
+.city-box:after
+{
+    top: -20px;
+
+    border-color: transparent transparent #c8c8c8;
+}
+.city-box *
+{
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+
+    margin: 0;
+    padding: 0;
+
+    color: #666;
+}
+
+.prov-city
+{
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.provence:after,
+.provence ul:after,
+.prov-city ul:after,
+#js_provCitys:after
+{
+    display: block;
+    clear: both;
+
+    height: 0;
+
+    content: ' ';
+}
+.provence div
+{
+    font-weight: bold;
+}
+.provence ul
+{
+    font-weight: normal;
+
+    margin: 0 -5px;
+    padding-top: 15px;
+
+    list-style-type: none;
+
+    *zoom: 1;
+}
+.provence li,
+.prov-city li,
+#js_provCitys li
+{
+    float: left;
+
+    margin: 0 5px 10px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: #999;
+    background: #fafafa;
+}
+.provence li
+{
+    line-height: 32px;
+
+    position: relative;
+
+    width: 60px;
+    height: 32px;
+    margin: 0 4px 8px;
+    padding: 0;
+}
+.provence li li
+{
+    line-height: normal;
+
+    height: auto;
+    margin: 0 5px 10px;
+    padding: 5px;
+}
+.provence span:hover,
+.prov-city li:hover,
+#js_provCitys li:hover
+{
+    color: #f3c7c9;
+    background: #f3f3f3;
+}
+.prov-city p
+{
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+.prov-city ul,
+#js_provCitys
+{
+    position: initial;
+
+    margin: 0 -5px;
+
+    list-style: none;
+
+    border: none;
+
+    *zoom: 1;
+}
+.prov-city li,
+#js_provCitys li
+{
+    font-family: 'Microsoft YaHei';
+    font-size: 14px;
+
+    width: 62px;
+}
+
+#js_provCitys
+{
+    position: absolute;
+    z-index: 99999;
+    top: 33px;
+    left: -15px;
+
+    width: 410px;
+    margin: 0;
+    padding: 0;
+    padding-top: 10px;
+
+    border: 1px solid #d8d8d8;
+    background: #fff;
+
+    *zoom: 1;
+}
+.provence span
+{
+    display: block;
+
+    width: 40px;
+    height: 100%;
+    padding: 0 10px;
+
+    border: 1px solid #fafafa;
+    background: #fafafa;
+}
+

@@ -1,0 +1,272 @@
+input.radiocheck + label
+{
+    position: relative;
+
+    cursor: pointer;
+}input.radiocheck + label:after,
+input.radiocheck + label:before
+{
+    font-family: FontAwesome;
+
+    position: absolute;
+
+    text-align: center;
+}input.radiocheck + label.full
+{
+    top: 1px;
+
+    color: #fff;
+    border: 2px solid white;
+    border-radius: 3px;
+    background: #f3c7c9;
+}input.radiocheck + label.full:hover
+{
+    border: 2px inset white;
+}
+
+input.radiocheck + label.full:after
+{
+    color: #fff;
+    background: #f3c7c9;
+}
+input.radiocheck + label.full:before
+{
+    color: #fff;
+    background: #f3c7c9;
+}input.radiocheck + label.full:before
+{
+    content: '';
+}input.radiocheck + label.full:after
+{
+    content: '\f00c';
+    transition: all .2s;
+
+    opacity: 0;
+}input[type=checkbox].radiocheck:disabled + label.full,
+input[type=checkbox].radiocheck:disabled + label.full:after,
+input[type=checkbox].radiocheck:disabled + label.full:before,
+input[type=radio].radiocheck:disabled + label.full,
+input[type=radio].radiocheck:disabled + label.full:after,
+input[type=radio].radiocheck:disabled + label.full:before
+{
+    cursor: default;
+
+    background: #72d5f3;
+}input.radiocheck + label.full.small.right
+{
+    font-size: 15px;
+
+    padding: 1px 18px 1px 3px;
+}input.radiocheck + label.full.small.right:after,
+input.radiocheck + label.full.small.right:before
+{
+    font-size: 14px;
+    line-height: 18px;
+
+    top: 2px;
+    right: 0;
+
+    width: 18px;
+    height: 18px;
+}input.radiocheck + label.full.default
+{
+    font-size: 14px;
+
+    padding: 14px 40px 10px 10px;
+}input.radiocheck + label.full.default::after,
+input.radiocheck + label.full.default::before
+{
+    font-size: 22px;
+    line-height: 24px;
+
+    top: 9px;
+    right: 9px;
+
+    width: 24px;
+    height: 24px;
+}input[type=checkbox].radiocheck,
+input[type=radio].radiocheck
+{
+    display: none;
+}input[type=checkbox].radiocheck:checked + label:after,
+input[type=radio].radiocheck:checked + label:after
+{
+    opacity: 1;
+}div.content-container
+{
+    font-style: Arial;
+
+    position: absolute;
+}
+div.search-wrapper
+{
+    position: relative;
+    top: 60px;
+    left: 100px;
+
+    width: 700px;
+    padding-top: 30px;
+    padding-right: 100px;
+    padding-bottom: 30px;
+    padding-left: 100px;
+
+    border: 3px solid #f5efef;
+    border-radius: 20px;
+    background-color: #fafafa;
+}
+input.inputt
+{
+    font-size: 16px;
+
+    width: 500px;
+    height: 36px;
+
+    color: #f3c7c9;
+    border: 2px solid #f3c7c9;
+}
+input.submitt
+{
+    font-size: 16px;
+
+    width: 160px;
+    height: 40px;
+
+    color: #fff;
+    border: 2px solid #f3c7c9;
+    background-color: #f3c7c9;
+}
+input.submitt:hover
+{
+    background-color: #f78181;
+}
+div#main-container
+{
+    position: relative;
+    top: 70px;
+    left: 100px;
+
+    width: 700px;
+    padding-top: 30px;
+    padding-right: 100px;
+    padding-bottom: 30px;
+    padding-left: 100px;
+
+    border: 3px solid #f5efef;
+    border-radius: 20px;
+    background-color: #fafafa;
+}
+div#positionHead
+{
+    font-size: 16px;
+
+    color: #f78181;
+}
+
+li.multi-chosen
+{
+    margin-bottom: 10px;
+}
+div.s_position_list
+{
+    position: relative;
+    top: 90px;
+    left: 100px;
+
+    width: 700px;
+    padding-right: 100px;
+    padding-left: 100px;
+
+    border-radius: 20px;
+}
+div.holder
+{
+    position: relative;
+    right: 100px;
+
+    width: 900px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border: 3px solid #f5efef;
+    background-color: #f78181;
+}
+div.position_show
+{
+    position: relative;
+    right: 100px;
+
+    width: 900px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    border: 3px solid #f5efef;
+    background-color: #fafafa;
+}
+li.con_list_item
+{
+    padding-right: 100px;
+    padding-bottom: 20px;
+    padding-left: 100px;
+
+    border-bottom: 2px dashed #f3c7c9;
+}
+div.list_item_top div
+{
+    margin-bottom: 10px;
+}
+div.list_item_top div.company
+{
+    font-size: 16px;
+
+    position: relative;
+    top: -80px;
+
+    float: right;
+}
+span.biggg
+{
+    font-size: 21px;
+
+    color: #f3c7c9;
+}
+span.biggg:hover
+{
+    color: #f78181;
+}
+span.add
+{
+    color: #f78181;
+}
+
+div.li_b_l
+{
+    padding-top: 10px;
+}
+
+div.p_bot span.money
+{
+    font-size: 18px;
+
+    color: red;
+}
+div.company_name
+{
+    color: #f3c7c9;
+}
+
+div.current-handle-position input.mm
+{
+    position: relative;
+    top: 1px;
+	text-align:center;
+    padding: 4px 4px 4px 4px;
+	width:50px;
+    color: #fff;
+    border: 2px solid white;
+    border-radius: 3px;
+    background: #f3c7c9;
+}
+div.current-handle-position input.mm:hover
+{
+    border: 2px inset white;
+}
