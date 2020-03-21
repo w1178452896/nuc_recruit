@@ -2,5 +2,6 @@
 /webapp/WEB-INF/classes
 /webapp/META-INF/
 .settings
+classes
 .idea
 nuc_recruit.iml
