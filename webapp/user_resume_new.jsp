@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -76,10 +76,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div id="touxiang">
 					<div id="tupian">
 					<c:if test="${resume.personPic!=null}">
-					<img src="/pic/${resume.personPic }" name="xianshi" id="rrr" onclick="anniu()" />
+					<img src="${pageContext.request.contextPath}/upload/${resume.personPic }" name="xianshi" id="rrr" onclick="anniu()" />
 					</c:if>
 					</div>
-					<input type="file" name="personPics" id="file_input" style="display:none" />
+					<c:if test="${resume.personPic==null}">
+						<input type="file" value="请选择头像" name="personPics" id="file_input" <%--style="display:none"--%> />
+					</c:if>
 				</div>
 
 				<div class="resume2">

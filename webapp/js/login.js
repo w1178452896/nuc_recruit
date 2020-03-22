@@ -30,7 +30,7 @@ $(function(){
 		$("#reroateForm").submit();
 	});
 	var liActive = window.localStorage.getItem("liActive");
-	if(liActive == "用户登录"){
+	if(liActive == "学生登录"){
 		$(".sign-nav li").eq(0).addClass("li-active").siblings().removeClass("li-active");
 		$(".sign-nav li").eq(0).attr("id","type").siblings().attr("id","");
 	}else{
@@ -111,7 +111,7 @@ $(function(){
 		var pwd = $("#pwd").val();
 		var vertify = $("#vertify").val();
 		var type = $("#type").html();
-		if(type == "用户登录" || type == "个人用户绑定"){
+		if(type == "学生登录" || type == "个人用户绑定"){
 			$("#iptType").val("0");
 		}
 		else if(type == "企业登录" || type == "企业用户绑定"){

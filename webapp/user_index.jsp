@@ -3,7 +3,8 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 
@@ -400,7 +401,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 										</h2>
 										<!-- 此处需要和后台确认 -->
-										<span class="fl">${position1.releaseDate }</span>
+										<span class="fl"><fmt:formatDate value='${position1.releaseDate}' pattern='yyyy-MM-dd'/></span>
 									</div>
 									<div>
 										<span class="salary fl">${position1.salary }</span>
@@ -436,7 +437,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 										</h2>
 										<!-- 此处需要和后台确认 -->
-										<span class="fl">${position2.releaseDate }</span>
+										<span class="fl"><fmt:formatDate value='${position1.releaseDate}' pattern='yyyy-MM-dd'/></span>
 									</div>
 									<div>
 										<span class="salary fl">${position2.salary }</span>
@@ -472,7 +473,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 										</h2>
 										<!-- 此处需要和后台确认 -->
-										<span class="fl">${position3.releaseDate }</span>
+										<span class="fl"><fmt:formatDate value='${position2.releaseDate}' pattern='yyyy-MM-dd'/></span>
 									</div>
 									<div>
 										<span class="salary fl">${position3.salary }</span>
@@ -484,7 +485,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="fr pli_top_r">
 									<div class="company_name wordCut">
-										<a href="javascript:;"   >${company3.companyName }</a>
+										<a href="javascript:;"   ><fmt:formatDate value='${position3.releaseDate}' pattern='yyyy-MM-dd'/></a>
 									</div>
 									<div class="industry wordCut">
 										<span>${company3.industry }</span>
@@ -508,7 +509,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 										</h2>
 										<!-- 此处需要和后台确认 -->
-										<span class="fl">${position4.releaseDate }</span>
+										<span class="fl"><fmt:formatDate value='${position4.releaseDate}' pattern='yyyy-MM-dd'/></span>
 									</div>
 									<div>
 										<span class="salary fl">${position4.salary }</span>
@@ -544,7 +545,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											
 										</h2>
 										<!-- 此处需要和后台确认 -->
-										<span class="fl">${position5.releaseDate }</span>
+										<span class="fl"><fmt:formatDate value='${position5.releaseDate}' pattern='yyyy-MM-dd'/></span>
 									</div>
 									<div>
 										<span class="salary fl">${position5.salary }</span>

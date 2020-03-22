@@ -45,7 +45,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<section class="sign-content">
 		<!-- 登录框表头 -->
 		<ul class="sign-nav">
-			<li class="li-active" id="type">用户登录</li>
+			<li class="li-active" id="type">学生登录</li>
 			<li>企业登录</li>
 		</ul>
 		<!-- 登录框左边 -->
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<input type="button" value="登录" class="ipt btn" id="login">
 			</form>
 			<form action="" method="post" id="reroateForm"></form>
-			<p class="account">还没有伯乐账号？<a href="register.jsp">立即注册<span class="icon-go">&rarr;</span></a></p>
+			<p class="account">还没有账号？<a href="register.jsp">立即注册<span class="icon-go">&rarr;</span></a></p>
 		</div>
 		<!-- 登录框右边 -->
 		<div class="sign-right">

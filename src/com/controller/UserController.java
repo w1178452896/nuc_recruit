@@ -28,6 +28,9 @@ import com.services.PracticalExperienceService;
 import com.services.ProjectService;
 import com.services.ResumeService;
 import com.services.UserService;
+
+import static org.apache.logging.log4j.ThreadContext.isEmpty;
+
 /**
  * 个人模块Controller
  * @author superJJ
@@ -68,14 +71,18 @@ public class UserController{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		int uid=(Integer)session.getAttribute("uid");
 		
-		String originalFileName=personPics.getOriginalFilename();
-		if(personPics!=null&&originalFileName!=null&&originalFileName.length()>0){
-			String picPath="F:\\pic\\";
+		if(personPics!=null){
+			String originalFileName=personPics.getOriginalFilename();
+			String picPath=request.getSession().getServletContext().getRealPath("/upload");
 			String newFileName = UUID.randomUUID() + originalFileName.substring(originalFileName.lastIndexOf("."));
-			File newFile=new File(picPath+newFileName);
+			File upliadDir = new File(picPath);
+			if(!upliadDir.exists()){
+				upliadDir.mkdir();
+			}
+			File newFile=new File(picPath+File.separator+newFileName);
 			personPics.transferTo(newFile);
 			if(newFileName.equals("")||newFileName==null){
-				resume.setPersonPic("touxiang.png");
+				resume.setPersonPic("pic.jpg");
 			}else{
 				resume.setPersonPic(newFileName);
 			}
@@ -83,7 +90,9 @@ public class UserController{
 		Date dbir=sdf.parse(bir);
 		resume.setUid(uid);
 		resume.setBirthday(dbir);
-		if(!resumeService.findAllResume(uid).isEmpty()){
+		List<Resume> allResume = resumeService.findAllResume(uid);
+		if(!allResume.isEmpty()){
+			resume.setPersonPic(allResume.get(0).getPersonPic());
 			resumeService.updateResume(resume);
 		}
 		else{
