@@ -66,14 +66,14 @@ public class CompanyInfoController {
 		companyInfo.setTelephone(telephone);
 		companyInfo.setCompanyInstruction(companyInstruction);
 		
-		String originalFilename = logopic.getOriginalFilename();
-		if(logopic !=null && originalFilename !=null && originalFilename.length()>0) {
+		if(logopic !=null) {
+			String originalFilename = logopic.getOriginalFilename();
 			//存储图片的物理路径
-			String pic_path = "F:\\pic\\";
+			String pic_path = request.getSession().getServletContext().getRealPath("/upload");
 			//新的图片名称
 			String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
 			//新图片
-			File newFile = new File(pic_path + newFileName);
+			File newFile = new File(pic_path +File.separator+ newFileName);
 			
 			//将内存的数据写入磁盘
 			logopic.transferTo(newFile);
@@ -130,11 +130,11 @@ public class CompanyInfoController {
 		String originalFilename = logopic.getOriginalFilename();
 		if(logopic !=null && originalFilename !=null && originalFilename.length()>0) {
 			//存储图片的物理路径
-			String pic_path = "F:\\pic\\";
+			String pic_path = request.getSession().getServletContext().getRealPath("/upload");
 			//新的图片名称
 			String newFileName = UUID.randomUUID() + originalFilename.substring(originalFilename.lastIndexOf("."));
 			//新图片
-			File newFile = new File(pic_path + newFileName);
+			File newFile = new File(pic_path +File.separator+ newFileName);
 			
 			//将内存的数据写入磁盘
 			logopic.transferTo(newFile);

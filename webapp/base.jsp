@@ -131,7 +131,7 @@
     <!--导航条上方欢迎和退出-->
     <div class="head-contain">
         <div class="head">
-            <span class="head-left"><strong>东软微简历项目</strong></span>
+            <span class="head-left"><strong></strong></span>
             <span class="head-right">你好，${sessionScope.companyname}</span>
             <a href="#" class="head-right" style=" color: #86CFED;">退出</a>
             <a href="enterprise_edit_info.html" class="head-right"style=" color: #86CFED;" target="iframe" >编辑信息</a>

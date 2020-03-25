@@ -78,8 +78,9 @@ public class CommonServiceImpl implements CommonService{
 		Template t = configuration.getTemplate("resume.ftl");//加载模板
 		Writer out = null;
 		for (int i = 0; i < list.size(); i++) {
-			File outFile = new File(rootPath+"tmp/"+list.get(i).getName()+".doc");
-			out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(outFile),"UTF-8"));
+			File tmp = new File(rootPath+"tmp");
+			if (!tmp.exists()) tmp.mkdir();
+			out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(rootPath+"tmp/"+list.get(i).getName()+".doc")),"UTF-8"));
 			t.process(list.get(i), out);
 			out.close();
 		}			

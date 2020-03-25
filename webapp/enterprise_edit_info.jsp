@@ -39,7 +39,7 @@
     <!--导航条上方欢迎和退出-->
     <div class="head-contain">
         <div class="head">
-            <span class="head-left"><strong>东软微简历项目</strong></span>
+            <span class="head-left"><strong></strong></span>
             <span class="head-right">你好 ! ${sessionScope.companyname}</span>
             <a href="${pageContext.request.contextPath}/loginOut.action" class="head-right" >退出</a>
             <a href="${pageContext.request.contextPath}/companyInfoFind.action" class="head-right"style=" color: #86CFED;">编辑信息</a>
@@ -53,7 +53,7 @@
         <div class="nav">
             <ul>
                 <!--logo-->
-                <li class="logo"><img src="login.png"></li>
+                <li class="logo"><img src="images/login.png"></li>
                 <!--导航-->
                 <li class="nav-right"><a href="${basePath}findPositionByCid.action?state=1&currentPage=1">简历管理</a></li>
                 <li class="nav-right"><a href="${pageContext.request.contextPath}/findOnPosition.action?currentPage=1">职位管理</a></li>
@@ -289,7 +289,7 @@
         <div class="col-sm-2">
             <input type="file" class="form-control" name="logopic" id="logo" >
         </div>
-        <img src="/pic/${companyInfo.logo}" style="width: 100px;height: 100px" id="img">
+        <img src="${pageContext.request.contextPath}/upload/${companyInfo.logo}" style="width: 100px;height: 100px" id="img">
         <label id="logo-tip"  class="control-label" style="color:red; display: none">公司logo不能为空</label>
         <label id="logo-tip2"  class="control-label" style="color:red; display: none">图片限于bmp,png,gif,jpeg,jpg格式</label>
         <label id="logo-tip3"  class="control-label" style="color:red; display: none">图片不大于300KB</label>

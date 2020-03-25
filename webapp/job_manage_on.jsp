@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--导航条上方欢迎和退出-->
     <div class="head-contain">
         <div class="head">
-            <span class="head-left"><strong>东软微简历项目</strong></span>
+            <span class="head-left"><strong></strong></span>
             <span class="head-right">你好，${sessionScope.companyname}</span>
             <a href="${pageContext.request.contextPath}/loginOut.action" class="head-right" >退出</a>
             <a href="${pageContext.request.contextPath}/companyInfoFind.action" class="head-right " >编辑信息</a>
@@ -87,7 +87,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nav">
             <ul>
                 <!--logo-->
-                <li class="logo"><img src="login.png"></li>
+                <li class="logo"><img src="images/login.png"></li>
                 <!--导航-->
                 <li class="nav-right"><a href="${basePath}findPositionByCid.action?state=1&currentPage=1" >简历管理</a></li>
                 <li class="nav-right"><a href="${pageContext.request.contextPath}/findOnPosition.action?currentPage=1" style="background-color: #337AB7">职位管理</a></li>

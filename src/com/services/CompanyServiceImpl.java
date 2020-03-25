@@ -64,13 +64,13 @@ public class CompanyServiceImpl implements CompanyService{
 		companyMapper.addCompany(company);
 		StringBuilder sb=new StringBuilder("点击下面链接激活账号，24小时内生效，" +
 				"否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
-		sb.append("<a href=\"http://localhost/newMiniResume/register.action?action=activate&mail=");
+		sb.append("<a href=\"http://localhost:8080/nuc_recruit/register.action?action=activate&mail=");
 	    sb.append(company.getMail()); 
 	    sb.append("&validateCode=");
 	    sb.append(company.getCode());
 	    sb.append("&type=");
 	    sb.append(type);
-	    sb.append("\">http://localhost/newMiniResume/register.action?action=activate&mail="); 
+	    sb.append("\">http://localhost:8080/nuc_recruit/register.action?action=activate&mail=");
 	    sb.append(company.getMail());
 	    sb.append("&validateCode=");
 	    sb.append(company.getCode());
