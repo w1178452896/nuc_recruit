@@ -137,9 +137,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="bar">
         <ul class="nav nav-pills">
             <li  ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=w" target="_self">待处理</a></li>
-            <li class="active"><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s" target="_self">已发送邀请</a></li>
+            <li ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s" target="_self">已发送邀请</a></li>
             <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=r" target="_self">不合适</a></li>
-            <li ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=e" target="_self">聘用</a></li>
+            <li class="active"><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=e" target="_self">聘用</a></li>
         </ul>
     </div>
     <form action="" enctype="multipart/form-data" method="post">

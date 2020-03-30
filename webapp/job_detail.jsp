@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  				<dd class="job_bt">
  					<h3 class="description">公司描述</h3>
  					<div class="job_comp">
- 						<img class="job_img" src="/pic/${companyInfo.logo }"> 
+ 						<img class="job_img" src="${pageContext.request.contextPath}/upload/${companyInfo.logo }">
  						<span>公司名称：${companyInfo.companyName }</span>
  						<br/> 
  						<span>公司地址：${companyInfo.location }</span>

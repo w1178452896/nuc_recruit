@@ -51,8 +51,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 //alert($("#send").serialize());
                 $("#send").submit();
             });
-            /*录用*/
-            $("#improper").click(function(){
+            /*聘用*/
+            $("#employ").click(function(){
                 var aa = pp+'employ.action';
                 var idArr = [];
                 $("#result input[type=checkbox]:checked").each(function(){

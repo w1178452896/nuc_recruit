@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $("#send").submit();
             });
             /*录用*/
-            $("#improper").click(function(){
+            $("#employ").click(function(){
                 var aa = pp+'employ.action';
                 var idArr = [];
                 $("#result input[type=checkbox]:checked").each(function(){
