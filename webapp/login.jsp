@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="sign-left">
 			<form id="loginForm" class="sign-form" action="${pageContext.request.contextPath}/login.action" method="post">
 				<input type="hidden" value="" name="type" id="iptType">
-				<input type="email" class="ipt" placeholder="请输入已验证邮箱" id="email" name="mail"><br/>
+				<input type="email" class="ipt" placeholder="请输入邮箱或学号" id="email" name="mail"><br/>
 				<i class="warn-tips">请输入已验证的邮箱</i>
 				<input type="password" class="ipt" placeholder="请输入密码" id="pwd" name="password"><br/>
 				<i class="warn-tips">请输入密码</i>

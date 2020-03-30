@@ -142,8 +142,20 @@ public class LoginAndRegisterController {
 		if("0".equals(type)){
 			//个人登录
 			List<User> userList=userService.findAllUser();
+			boolean isMail=mail.contains("@");
 			for(User user:userList){
-				if(user.getMail().equals(mail)&&user.getPassword().equals(password)){
+				//邮箱登录
+				boolean login=false;
+				if (isMail){
+					if(user.getMail().equals(mail)&&user.getPassword().equals(password)){
+						login=true;
+					}
+				}else{ //学号登录
+					if(mail.equals(user.getSno())&&user.getPassword().equals(password)){
+						login=true;
+					}
+				}
+				if (login){
 					session.setAttribute("uid", user.getUid());
 					if("1".equals(user.getState())){
 						//未激活
@@ -161,6 +173,7 @@ public class LoginAndRegisterController {
 						return "user_index_redirect";
 					}
 				}
+
 			}
 			//System.out.println("adfhdjkhgt");
 			//response.getWriter().print("errors");
