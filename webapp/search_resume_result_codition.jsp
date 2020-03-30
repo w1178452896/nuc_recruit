@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <form action="${basePath}findResume.action" method="post" class="form-horizontal form" enctype="multipart/form-data" name="form-condition" id="form-condition">
          <input type="hidden" class="form-control" name="page" value="1">
         <div class="form-group">
-            <label for="experience" class=" col-sm-offset-1 col-sm-1 control-label">工作年限</label>
+            <label for="experience" class=" col-sm-offset-1 col-sm-1 control-label">实习经验</label>
             <div class="col-sm-2">
                 <select name="workYear" id="experience" class="form-control">
                     <option value="" selected="selected">不限</option>
@@ -196,7 +196,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </td>
             <td width="100" class="text-center">
                 <a href="" class="head-box" target="_blank">
-                    <img src="${list.personPic}" alt="" id="circle" />
+                    <img src="${pageContext.request.contextPath}/upload/${list.personPic}" alt="" id="circle" />
                 </a>
             </td>
             <td width="400" class="basic">

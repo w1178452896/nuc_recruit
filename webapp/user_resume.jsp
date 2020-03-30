@@ -105,6 +105,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<span id="baseti1">基本信息</span>
 					<span id="bas2">-----------</span>
 					<div class="base_in">
+						<span class="base_sp" >学号</span>
+						<input type="number" class="base_info" name="sno" id="sno" value="${sno }" minlength="10" maxlength="10"  required/>
+					</div>
+					<div class="base_in">
 						<span class="base_sp" >性别</span>
 						<select name="sex" id="sex" class="base_info" required>
 							<option value=""></option>
@@ -144,14 +148,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="hidden" id="hid_edu" value="${resume.education }" />
 					</div>
 					<div class="base_in">
-						<span class="base_sp">工作年限</span>
+						<span class="base_sp">实习经验</span>
 						<select class="base_info" name="workYear" id="Work_year" required>
 							<option value=""></option>
-							<option value ="1">应届毕业生</option>
-							<option value ="2">3年及以下</option>
-							<option value="3">3-5年</option>
-							<option value="4">5-10年</option>
-							<option value="5">10年以上</option>
+							<option value ="1">无</option>
+							<option value ="2">1-3月</option>
+							<option value="3">3-6月</option>
+							<option value="4">6-12月</option>
+							<option value="5">1年以上</option>
 						</select>
 						<input type="hidden" id="hid_wy" value="${resume.workYear }" />
 					</div>

@@ -72,7 +72,7 @@ public class PositionSearchController {
 	 * user_index最新职位排行
 	 * @param model
 	 * @param request
-	 * @param currentPage
+	 * @param
 	 * @return
 	 * @throws Exception 
 	 */
@@ -144,15 +144,15 @@ public class PositionSearchController {
 		
 		for(int i=0;i<5;i++){
 			if(positionList.get(i).getExperience().equals("1")){
-				positionList.get(i).setExperience("应届毕业生");
+				positionList.get(i).setExperience("无");
 			}else if(positionList.get(i).getExperience().equals("2")){
-				positionList.get(i).setExperience("3年以下");
+				positionList.get(i).setExperience("1-3月");
 			}else if(positionList.get(i).getExperience().equals("3")){
-				positionList.get(i).setExperience("3-5年");
+				positionList.get(i).setExperience("3-6月");
 			}else if(positionList.get(i).getExperience().equals("4")){
-				positionList.get(i).setExperience("5-10年");
+				positionList.get(i).setExperience("6-12月");
 			}else if(positionList.get(i).getExperience().equals("5")){
-				positionList.get(i).setExperience("10年以上");
+				positionList.get(i).setExperience("1年以上");
 			}else{
 				positionList.get(i).setExperience("不要求");
 			}
@@ -276,15 +276,15 @@ public class PositionSearchController {
 			}
 			
 			if(positionTmp.getExperience().equals("1")){
-				positionTmp.setExperience("应届毕业生");
+				positionTmp.setExperience("无");
 			}else if(positionTmp.getExperience().equals("2")){
-				positionTmp.setExperience("3年以下");
+				positionTmp.setExperience("1-3月");
 			}else if(positionTmp.getExperience().equals("3")){
-				positionTmp.setExperience("3-5年");
+				positionTmp.setExperience("3-6月");
 			}else if(positionTmp.getExperience().equals("4")){
-				positionTmp.setExperience("5-10年");
+				positionTmp.setExperience("6-12月");
 			}else if(positionTmp.getExperience().equals("5")){
-				positionTmp.setExperience("10年以上");
+				positionTmp.setExperience("1年以上");
 			}else{
 				positionTmp.setExperience("不要求");
 			}
@@ -347,15 +347,15 @@ public class PositionSearchController {
 			result.setEduRequest("不限");
 		}
 		if(result.getExperience().equals("1")){
-			result.setExperience("应届毕业生");
+			result.setExperience("无");
 		}else if(result.getExperience().equals("2")){
-			result.setExperience("3年以下");
+			result.setExperience("1-3月");
 		}else if(result.getExperience().equals("3")){
-			result.setExperience("3-5年");
+			result.setExperience("3-6月");
 		}else if(result.getExperience().equals("4")){
-			result.setExperience("5-10年");
+			result.setExperience("6-12月");
 		}else if(result.getExperience().equals("5")){
-			result.setExperience("10年以上");
+			result.setExperience("1年以上");
 		}else{
 			result.setExperience("不要求");
 		}

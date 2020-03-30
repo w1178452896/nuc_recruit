@@ -67,12 +67,12 @@
 		else '其他' end) education,
 		(
 		case  r.workYear 
-		when '1' then '应届毕业生'
-		when '2' then '3年及其以下'
-		when '3' then '3-5年'
-		when '4' then '5-10年'
-		when '5' then '10年以上'
-		else '10年以上' end) workYear,
+		when '1' then '无'
+		when '2' then '1-3月'
+		when '3' then '3-6月'
+		when '4' then '6-12月'
+		when '5' then '1年以上'
+		else '其他' end) workYear,
 		p.deliveryDate from position_resume p,resume r where 
 		p.pid=#{pid} and p.state=#{state} and r.uid=p.uid) tmp
 	</sql>

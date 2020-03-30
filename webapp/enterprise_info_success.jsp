@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<body>
 	<header>
 		<p class="top">
-			<img src="images/top.png" class="top">
+<%--			<img src="images/top.png" class="top">--%>
 		</p>
 	</header>
 

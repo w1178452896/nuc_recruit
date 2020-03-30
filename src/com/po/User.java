@@ -11,6 +11,7 @@ public class User {
 	private String mail;
 	private Date registerTime;
 	private String state;
+	private String sno;
 	private Resume resume;
 	private List<EducationExperience> educationExperience;
 	private List<Project> project;
@@ -129,15 +130,31 @@ public class User {
 		this.majorSkill = majorSkill;
 	}
 
-	@Override
-	public String toString() {
-		return "User [uid=" + uid + ", password=" + password + ", code=" + code
-				+ ", mail=" + mail + ", registerTime=" + registerTime
-				+ ", state=" + state + ", resume=" + resume
-				+ ", educationExperience=" + educationExperience + ", project="
-				+ project + ", practicalExperience=" + practicalExperience
-				+ ", majorSkill=" + majorSkill + "]";
+	public String getSno() {
+		return sno;
 	}
 
-	
+	public void setSno(String sno) {
+		this.sno = sno;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"uid=" + uid +
+				", password='" + password + '\'' +
+				", code='" + code + '\'' +
+				", mail='" + mail + '\'' +
+				", registerTime=" + registerTime +
+				", state='" + state + '\'' +
+				", sno='" + sno + '\'' +
+				", resume=" + resume +
+				", educationExperience=" + educationExperience +
+				", project=" + project +
+				", practicalExperience=" + practicalExperience +
+				", majorSkill=" + majorSkill +
+				'}';
+	}
+
+
 }

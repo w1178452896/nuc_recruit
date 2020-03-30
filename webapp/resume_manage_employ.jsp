@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
@@ -34,9 +34,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#page").blur(function(){
                 var page = $(this).val();
                 var pid = ${resume.pid};
-                var url = pp + "findPositionResume.action?currentPage="+page+"&pid="+pid+"&state=R";
+                var url = pp + "findPositionResume.action?currentPage="+page+"&pid="+pid+"&state=s";
                 $("#pageForm").attr("action",url);
                 $("#pageForm").submit();
+            });
+
+            /*标记为不合适*/
+            $("#improper").click(function(){
+                var aa = pp+'updatePositionResume.action';
+                var idArr = [];
+                $("#result input[type=checkbox]:checked").each(function(){
+                    idArr.push($(this).val());
+                });
+                $("#sendTo").val(idArr);
+                $("#send").attr("action",aa);
+                //alert($("#send").serialize());
+                $("#send").submit();
             });
 
             /*发送到我的电脑*/
@@ -123,9 +136,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="main-content">
     <div class="bar">
         <ul class="nav nav-pills">
-            <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=w" target="_self">待处理</a></li>
-            <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s" target="_self">已发送邀请</a></li>
-            <li class="active"><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=r" target="_self">不合适</a></li>
+            <li  ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=w" target="_self">待处理</a></li>
+            <li class="active"><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s" target="_self">已发送邀请</a></li>
+            <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=r" target="_self">不合适</a></li>
             <li ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=e" target="_self">聘用</a></li>
         </ul>
     </div>
@@ -164,18 +177,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="page" style="margin-bottom: 40px"> &nbsp;&nbsp;
             <input type="checkbox" id="checkedAll">&nbsp;全选&nbsp;&nbsp;&nbsp; 
-            <a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=r">首页</a>&nbsp;&nbsp;&nbsp;
-            <a href="${basePath}findPositionResume.action?currentPage=${resume.totalPage}&pid=${resume.pid}&state=r">尾页</a>&nbsp;&nbsp;&nbsp;               
+            <a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s">首页</a>&nbsp;&nbsp;&nbsp;
+            <a href="${basePath}findPositionResume.action?currentPage=${resume.totalPage}&pid=${resume.pid}&state=s">尾页</a>&nbsp;&nbsp;&nbsp;               
             第${resume.currentPage}/${resume.totalPage}页&nbsp;&nbsp;&nbsp;去&nbsp;&nbsp;
             <input type="text" style="width: 40px;text-align:center;" id="page" value="">&nbsp;&nbsp;页
             <br><br>
             <ul class="nav nav-pills">
+<%--                <li class="active"><a href="javascript:void(0)" id="improper">标记为不合适</a></li>--%>
                 <li class="active"><a href="javascript:void(0)" id="sendToComputer">保存到我的电脑</a></li>
                 <li class="active"><a href="javascript:void(0)" id="sendToEmail" data-toggle="modal" data-target="#sendToEmailModal">转发简历到邮箱</a></li>
             </ul>
         </div>
     </form>
-    
+
     <!-- 转发简历到邮箱 begin -->
     <div class="modal fade" id="sendToEmailModal" tabindex="-1" role="dialog" aria-labelledby="sendToEmail">
       <div class="modal-dialog" role="document">
@@ -208,9 +222,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     <!-- 转发简历到邮箱 end -->
-
-    <form action="" method="post" id="pageForm">
-    </form> 
+    
+    <form action="" method="post" id="pageForm"></form> 
     
     <!--转发到邮箱form-->
     <form action="" method="post" id="send">

@@ -21,12 +21,15 @@ import javax.activation.*;
 import javax.mail.*;
 import javax.mail.Message.RecipientType;
 import javax.mail.internet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Service;
 
 import com.po.PersonalResume;
 
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import sun.misc.BASE64Encoder;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -61,16 +64,27 @@ public class CommonServiceImpl implements CommonService{
 		String rootPath = getClass().getResource("/..").getFile().toString();
 		rootPath = rootPath.substring(1, rootPath.length());		
 		//读取照片
-		InputStream in = null;
-		File file = new File(list.get(0).getPersonPic());
-		if(file.exists()){
-			in = new FileInputStream(list.get(0).getPersonPic());
-			byte[] data = new byte[in.available()];
-			in.read(data);
-			in.close();
-			BASE64Encoder base64 = new BASE64Encoder();
-			list.get(0).setPersonPic(base64.encode(data));//照片以二进制数据写入简历
-		}
+
+
+		HttpServletRequest req = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String realPath = req.getServletContext().getRealPath("/");
+		list.forEach(personalResume -> {
+			InputStream in = null;
+			File file = new File(realPath+"upload"+File.separator+personalResume.getPersonPic());
+			if(file.exists()){
+				try {
+					in = new FileInputStream(realPath+"upload"+File.separator+personalResume.getPersonPic());
+					byte[] data = new byte[in.available()];
+					in.read(data);
+					in.close();
+					BASE64Encoder base64 = new BASE64Encoder();
+					personalResume.setPersonPic(base64.encode(data));//照片以二进制数据写入简历
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+
 		@SuppressWarnings("deprecation")
 		Configuration configuration = new Configuration();
 		configuration.setDefaultEncoding("utf-8");

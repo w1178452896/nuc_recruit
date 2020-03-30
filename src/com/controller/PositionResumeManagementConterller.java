@@ -79,6 +79,7 @@ public class PositionResumeManagementConterller {
 		model.addAttribute("resume", spr);
 		if(state.equalsIgnoreCase("w")) return "/resume_manage_deal";
 		else if(state.equalsIgnoreCase("s")) return "/resume_manage_send";
+		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
 		else return "/resume_manage_un";
 		
 	}
@@ -174,7 +175,7 @@ public class PositionResumeManagementConterller {
 		if(personalResume.getIdArr().size()>0){
 			list = positionResumeManagementService.findPersonalResume(personalResume.getIdArr());
 			for (int i = 0; i < list.size(); i++) {
-				commonService.SendEmail("601647957@qq.com", personalResume.getSubject(), list.get(i).getName()+"你好"+personalResume.getMessage());
+				commonService.SendEmail("1179452896@qq.com", personalResume.getSubject(), list.get(i).getName()+"你好"+personalResume.getMessage());
 			}
 			String state = "s";
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -226,6 +227,49 @@ public class PositionResumeManagementConterller {
 		model.addAttribute("resume", spr);
 		if(state.equalsIgnoreCase("w")) return "/resume_manage_deal";
 		else if(state.equalsIgnoreCase("s")) return "/resume_manage_send";
+		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
+		else return "/resume_manage_un";
+	}
+
+	/**
+	 * 聘用
+	 * @param model
+	 * @param response
+	 * @param personalResume
+	 * @param pid
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("employ")
+	public String employ(Model model,HttpServletResponse response,PersonalResume personalResume,Integer pid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
+		System.out.println(personalResume.getIdArr().size());
+		System.out.println(pid);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pid",pid);
+		map.put("uidList", personalResume.getIdArr());
+		map.put("state", "e");
+		try {
+			positionResumeManagementService.updatePositionResume(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ShowPositionResume spr = new ShowPositionResume();
+	    spr.setPid(pid);
+	    spr.setState(state);
+	    spr.setPageSize(4);
+		int totalRows = positionResumeManagementService.findPositionResumeCount(spr);
+		spr.setTotalRows(totalRows);
+		if(totalRows>0){
+			spr.setCurrentPage(currentPage);
+			spr = positionResumeManagementService.findPositionResume(spr);
+			spr.setTotalRows(totalRows);
+			spr.setPageSize(4);
+			spr.setCurrentPage(currentPage);
+		}
+		model.addAttribute("resume", spr);
+		if(state.equalsIgnoreCase("w")) return "/resume_manage_deal";
+		else if(state.equalsIgnoreCase("s")) return "/resume_manage_send";
+		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
 		else return "/resume_manage_un";
 	}
 }

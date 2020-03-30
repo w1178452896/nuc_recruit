@@ -51,6 +51,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 //alert($("#send").serialize());
                 $("#send").submit();
             });
+            /*录用*/
+            $("#improper").click(function(){
+                var aa = pp+'employ.action';
+                var idArr = [];
+                $("#result input[type=checkbox]:checked").each(function(){
+                    idArr.push($(this).val());
+                });
+                $("#sendTo").val(idArr);
+                $("#send").attr("action",aa);
+                //alert($("#send").serialize());
+                $("#send").submit();
+            });
 
             /*发送到我的电脑*/
             $("#sendToComputer").click(function(){
@@ -137,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nav">
             <ul>
                 <!--logo-->
-                <li class="logo"><img src="images/login.png"></li>
+<%--                <li class="logo"><img src="images/login.png"></li>--%>
                 <!--导航-->
                 <li class="nav-right"><a href="${basePath}findPositionByCid.action?state=1&currentPage=1" style="background-color: #337AB7">简历管理</a></li>
               <li class="nav-right"><a href="${pageContext.request.contextPath}/findOnPosition.action?currentPage=1" >职位管理</a></li>
@@ -155,7 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <li  class="active"><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=w" target="_self">待处理</a></li>
             <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=s" target="_self">已发送邀请</a></li>
             <li><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=r" target="_self">不合适</a></li>
-      
+            <li ><a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=e" target="_self">聘用</a></li>
         </ul>
     </div>
     <form action="" enctype="multipart/form-data" method="post">
@@ -167,7 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <th>姓名</th>
                     <th>职位名称</th>
                     <th>性别</th>
-                    <th>工作年限</th>
+                    <th>实习经验</th>
                     <th>学历</th>
                     <th>毕业学校</th>
                     <th>投递日期</th>
@@ -201,6 +213,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <ul class="nav nav-pills">
                 <li  class="active"><a href="javascript:void(0)" id="sendInvite" data-toggle="modal" data-target="#sendInviteModal">发送邀请</a></li>
                 <li class="active"><a href="javascript:void(0)" id="improper">标记为不合适</a></li>
+                <li class="active"><a href="javascript:void(0)" id="employ">聘用</a></li>
                 <li class="active"><a href="javascript:void(0)" id="sendToComputer">保存到我的电脑</a></li>
                 <li class="active"><a href="javascript:void(0)" id="sendToEmail" data-toggle="modal" data-target="#sendToEmailModal">转发简历到邮箱</a></li>
             </ul>

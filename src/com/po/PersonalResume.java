@@ -33,15 +33,15 @@ public class PersonalResume extends Resume{
 	@Override
 	public void setWorkYear(String workYear){
 		if(workYear.equals("1")){
-			this.workYear = "应届毕业生";
+			this.workYear = "无";
 		}else if(workYear.equals("2")){
-			this.workYear = "3年及以下";
+			this.workYear = "1-3月";
 		}else if(workYear.equals("3")){
-			this.workYear = "3-5年";
+			this.workYear = "3-6月";
 		}else if(workYear.equals("4")){
-			this.workYear = "5-10年";
+			this.workYear = "6-12月";
 		}else{
-			this.workYear = "其他";
+			this.workYear = "1年以上";
 		}
 	}
 	@Override

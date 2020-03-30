@@ -405,7 +405,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div>
 										<span class="salary fl">${position1.salary }</span>
-										<span>${position1.experience }工作经验</span>
+										<span>${position1.experience }实习经验</span>
 										/
 										<span>${position1.eduRequest }</span>
 
@@ -441,7 +441,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div>
 										<span class="salary fl">${position2.salary }</span>
-										<span>${position2.experience }工作经验</span>
+										<span>${position2.experience }实习经验</span>
 										/
 										<span>${position2.eduRequest }</span>
 
@@ -477,7 +477,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div>
 										<span class="salary fl">${position3.salary }</span>
-										<span>${position3.experience }工作经验</span>
+										<span>${position3.experience }实习经验</span>
 										/
 										<span>${position3.eduRequest }</span>
 
@@ -513,7 +513,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div>
 										<span class="salary fl">${position4.salary }</span>
-										<span>${position4.experience }工作经验</span>
+										<span>${position4.experience }实习经验</span>
 										/
 										<span>${position4.eduRequest }</span>
 
@@ -549,7 +549,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</div>
 									<div>
 										<span class="salary fl">${position5.salary }</span>
-										<span>${position5.experience }工作经验</span>
+										<span>${position5.experience }实习经验</span>
 										/
 										<span>${position5.eduRequest }</span>
 

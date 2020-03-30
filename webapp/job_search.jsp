@@ -116,17 +116,17 @@ console.log("xxxx");
 							</div>
 
 							<li class="multi-chosen">
-								<span class="title">工作经验：</span>
+								<span class="title">实习经验：</span>
 								<input class=" radiocheck" type="radio" value="1"  id="Work_year1" name="experience" />
-								<label class=" full small right" for="Work_year1">应届毕业生</label>
+								<label class=" full small right" for="Work_year1">无</label>
 								<input class=" radiocheck" type="radio" value="2"  id="Work_year2" name="experience" />
-								<label class=" full small right" for="Work_year2">3年及以下</label>
+								<label class=" full small right" for="Work_year2">1-3月</label>
 								<input class=" radiocheck" type="radio" value="3"  id="Work_year3" name="experience" />
-								<label class=" full small right" for="Work_year3">3-5年</label>
+								<label class=" full small right" for="Work_year3">3-6月</label>
 								<input class=" radiocheck" type="radio" value="4"  id="Work_year4" name="experience" />
-								<label class=" full small right" for="Work_year4">5-10年</label>
+								<label class=" full small right" for="Work_year4">6-12月</label>
 								<input class=" radiocheck" type="radio" value="5"  id="Work_year5" name="experience" />
-								<label class=" full small right" for="Work_year5">10年以上</label>
+								<label class=" full small right" for="Work_year5">1年以上</label>
 								<input class=" radiocheck" type="radio" value="6"  id="Work_year6" name="experience" />
 								<label class=" full small right" for="Work_year6">不要求</label>
 							</li>

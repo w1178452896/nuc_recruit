@@ -102,7 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						<br/> 
  						<span>工作地点：${result.workplace }</span>
  						<br/> 
- 						<span>工作经验：${result.experience }</span>
+ 						<span>实习经验：${result.experience }</span>
  						<br/> 
  						<span>学历要求：${result.eduRequest }</span>
  						<br/> 

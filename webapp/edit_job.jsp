@@ -207,7 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nav">
             <ul>
                 <!--logo-->
-                <li class="logo"><img src="images/login.png"></li>
+<%--                <li class="logo"><img src="images/login.png"></li>--%>
                 <!--导航-->
                 <li class="nav-right"><a href="${basePath}findPositionByCid.action?state=1&currentPage=1" >简历管理</a></li>
                 <li class="nav-right"><a href="${pageContext.request.contextPath}/findOnPosition.action?currentPage=1">职位管理</a></li>
@@ -294,14 +294,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
 
             <div class="form-group">
-                <label for="experience" class="col-sm-4 control-label">工作经验</label>
+                <label for="experience" class="col-sm-4 control-label">实习经验</label>
                 <div class="col-sm-2">
                     <select name="experience" id="experience" class="form-control">
-                        <option value="1" selected="selected">应届毕业生</option>
-                        <option value="2">3年及以下</option>
-                        <option value="3">3-5年</option>
-                        <option value="4">5-10年</option>
-                        <option value="5">10年以上</option>
+                        <option value="1" selected="selected">无</option>
+                        <option value ="2">1-3月</option>
+                        <option value="3">3-6月</option>
+                        <option value="4">6-12月</option>
+                        <option value="5">1年以上</option>
                         <option value="6">不要求</option>
                     </select>
                 </div>

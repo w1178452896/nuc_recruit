@@ -265,7 +265,7 @@
 	w:val="11232" /><w:displayHorizontalDrawingGridEvery
 	w:val="0" /><w:displayVerticalDrawingGridEvery
 	w:val="2" /><w:compat><w:spaceForUL /><w:breakWrappedTables /><w:useFELayout /></w:compat></w:docPr><w:body><wx:sect><w:p><w:pPr><w:pStyle
-	w:val="a9" /><w:autoSpaceDN w:val="off" /></w:pPr><w:r><w:pict><w:binData
+	w:val="a9" /><w:autoSpaceDN w:val="off" /></w:pPr><w:r><w:pict><#--<w:binData
 	w:name="wordml://1.jpg">/9j/4QSIRXhpZgAATU0AKgAAAAgABwESAAMAAAABAAEAAAEaAAUAAAABAAAAYgEbAAUAAAABAAAA
 agEoAAMAAAABAAIAAAExAAIAAAAeAAAAcgEyAAIAAAAUAAAAkIdpAAQAAAABAAAApAAAANAADqV6
 AAAnEAAOpXoAACcQQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykAMjAxNjowODowOCAwOTox
@@ -991,12 +991,12 @@ Ck70xZeFpknuOCo8+48PIyx3BQ6lkcpzWUWGn1emCO6rjRUfPBaBturM1rlKe4DgP+mF5LO5jw32
 ANII3j+wfFIYbD9dsJE5757/AKMtPJC21CRSoTBguZBwsk+orvJ6PWH5o7iEujehQ8yrJi1mWVtI
 mBaWLKZn7x7vbDDLbiXJAkqQZiaiVGRG6cv+mWGMjYAdQpRKhMzBlRGacz7qnCG0yBqE1bBUOTN/
 /a//AFI/h5Vm22UJzC6VLAko85H9ukoAjjEkgAcP+mQXm0LIqtJB88EstoQTXZSB5v8A1/8A/9k=
-</w:binData><v:shape id="_x0000_s1026" o:spt="75" alt="logo"
+</w:binData>--><#--<v:shape id="_x0000_s1026" o:spt="75" alt="logo"
 	type="#_x0000_t75" style="height:19.9pt;width:474.45pt;" filled="f"
 	o:preferrelative="t" stroked="f" coordsize="21600,21600"><v:path /><v:fill on="f"
 	focussize="0,0" /><v:stroke on="f" /><v:imagedata
 	src="wordml://1.jpg" o:title="logo" /><o:lock v:ext="edit"
-	aspectratio="t" /><w10:wrap type="none" /><w10:anchorlock /></v:shape></w:pict></w:r></w:p><w:p><w:pPr><w:pStyle
+	aspectratio="t" /><w10:wrap type="none" /><w10:anchorlock /></v:shape>--></w:pict></w:r></w:p><w:p><w:pPr><w:pStyle
 	w:val="a9" /><w:autoSpaceDN w:val="off" /><w:spacing
 	w:line="360" w:line-rule="auto" /><w:jc w:val="center" /></w:pPr><w:r><w:rPr><w:lang /></w:rPr><w:pict><w:binData
 	w:name="wordml://2.jpg">${(personPic)!}</w:binData><v:shape id="_x0000_s1027" o:spt="75"
@@ -1360,20 +1360,20 @@ WXMAAA7EAAAOxAGVKw4bAAAAIElEQVQ4je3BgQAAAAzDsJ1g/lJ1mcFFmhywLZIkKWn7NjcFbFC9
 	w:val="center" /><w:rPr><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
 	w:val="18" /><w:sz-cs w:val="18" /></w:rPr></w:pPr><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>简历来自：</w:t></w:r><w:r><w:rPr><w:rFonts
+	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--简历来自：--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /><w:lang w:fareast="ZH-CN" /></w:rPr><w:t>伯乐</w:t></w:r><w:r><w:rPr><w:rFonts
+	w:val="18" /><w:sz-cs w:val="18" /><w:lang w:fareast="ZH-CN" /></w:rPr><w:t><#--伯乐--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>网 - </w:t></w:r><w:r><w:rPr><w:rStyle
+	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--网 - --></w:t></w:r><w:r><w:rPr><w:rStyle
 	w:val="a13" /><w:rFonts w:hint="fareast" /><w:i /><w:i-cs /><w:color
-	w:val="808080" /><w:sz w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>最</w:t></w:r><w:r><w:rPr><w:rFonts
+	w:val="808080" /><w:sz w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--最--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>专业的互联网招聘网站 - www.</w:t></w:r><w:r><w:rPr><w:rFonts
+	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--专业的互联网招聘网站 - www-->.</w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
 	w:val="18" /><w:sz-cs w:val="18" /><w:lang w:val="EN-US"
-	w:fareast="ZH-CN" /></w:rPr><w:t>bole</w:t></w:r><w:r><w:rPr><w:rFonts
+	w:fareast="ZH-CN" /></w:rPr><w:t><#--bole--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t>.com</w:t></w:r></w:p><w:p><w:pPr><w:pStyle
+	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--.com--></w:t></w:r></w:p><w:p><w:pPr><w:pStyle
 	w:val="a3" /><w:rPr><w:rFonts w:hint="fareast" /><w:color
 	w:val="808080" /><w:sz w:val="24" /><w:sz-cs w:val="24" /></w:rPr></w:pPr></w:p></w:ftr><w:pgSz
 	w:w="11906" w:h="16838" /><w:pgMar w:top="720" w:right="1274"

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,8 +56,6 @@ public class UserController{
 	 * 填写个人信息
 	 * @param model
 	 * @param resume
-	 * @param dateStr 日期串
-	 * @param person_Pic 图片路径
 	 * @return
 	 * @throws Exception
 	 */
@@ -67,10 +66,14 @@ public class UserController{
 			String pestime,String peetime,String proName1,String proName2,
 			String posi1,String posi2,String stime1,String stime2,
 			String etime1,String etime2,String sta1,String sta2,String education2,
-			Model model,MultipartFile personPics) throws Exception {
+			Model model,MultipartFile personPics,String sno) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		int uid=(Integer)session.getAttribute("uid");
-		
+		User user = userService.findUserById(uid);
+		if (StringUtils.isEmpty(user.getSno())){
+			user.setSno(sno);
+			userService.updateUser(user);
+		}
 		if(personPics!=null){
 			String originalFileName=personPics.getOriginalFilename();
 			String picPath=request.getSession().getServletContext().getRealPath("/upload");
@@ -197,9 +200,9 @@ public class UserController{
 				projectService.insertProject(project2);
 			}
 		}
-		User user=userService.findUserById(uid);
 		user.setState("3");
 		userService.updateUser(user);
+		model.addAttribute("sno",user.getSno());
 		model.addAttribute("birthday", bir);
 		model.addAttribute("eestime", eestime);
 		model.addAttribute("eeetime", eeetime);
@@ -267,8 +270,10 @@ public class UserController{
 		
 		String birthday=sdf.format(resumeList.get(0).getBirthday()); 
 		String eestime=sdf.format(educationExperienceList.get(0).getStime()); 
-		String eeetime=sdf.format(educationExperienceList.get(0).getEtime()); 
-		
+		String eeetime=sdf.format(educationExperienceList.get(0).getEtime());
+
+		User user = userService.findUserById(uid);
+		model.addAttribute("sno",user.getSno());
 		model.addAttribute("resume", resumeList.get(0));
 		model.addAttribute("birthday", birthday);
 		model.addAttribute("educationExperience", educationExperienceList.get(0));
@@ -310,15 +315,15 @@ public class UserController{
 		if(request.getParameter("type")!=null){
 			String wy=null;
 			if(re.getWorkYear().equals("1")){
-				wy="应届毕业生";
+				wy="无";
 			}else if(re.getWorkYear().equals("2")){
-				wy="3年及以下";
+				wy="1-3月";
 			}else if(re.getWorkYear().equals("3")){
-				wy="3-5年";
+				wy="3-6月";
 			}else if(re.getWorkYear().equals("4")){
-				wy="5-10年";
+				wy="6-12月";
 			}else if(re.getWorkYear().equals("5")){
-				wy="10年以上";
+				wy="1年以上";
 			}
 			model.addAttribute("wy", wy);
 			return "show_resume_detail";
@@ -330,7 +335,6 @@ public class UserController{
 	/**
 	 * 更改密码
 	 * @param model
-	 * @param mail
 	 * @param oldPassword
 	 * @param newPassword1
 	 * @param newPassword2

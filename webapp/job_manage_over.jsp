@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="nav">
             <ul>
                 <!--logo-->
-                <li class="logo"><img src="images/login.png"></li>
+<%--                <li class="logo"><img src="images/login.png"></li>--%>
                 <!--导航-->
                 <li class="nav-right"><a href="${basePath}findPositionByCid.action?state=1&currentPage=1" >简历管理</a></li>
                 <li class="nav-right"><a href="${pageContext.request.contextPath}/findOnPosition.action?currentPage=1" style="background-color: #337AB7">职位管理</a></li>

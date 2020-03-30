@@ -8,6 +8,7 @@
   	<result column="code" property="code"/>
   	<result column="mail" property="mail"/>
   	<result column="registerTime" property="registerTime"/>
+  	<result column="sno" property="sno"/>
   	<association property="resume" javaType="com.po.Resume">
   		<id column="uid" property="uid"/>
   		<result column="name" property="name"/>
@@ -86,10 +87,10 @@
   </delete>
   
   <update id="updateUser" parameterType="User">
- 	 update user set password=#{password},state=#{state},code=#{code},mail=#{mail},registerTime=#{registerTime} where uid=#{uid}
+ 	 update user set password=#{password},state=#{state},code=#{code},mail=#{mail},registerTime=#{registerTime},sno=#{sno} where uid=#{uid}
   </update>
   
   <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
-	 insert into user(password,state,code,mail,registerTime) values(#{password},#{state},#{code},#{mail},#{registerTime})
+	 insert into user(password,state,code,mail,registerTime,sno) values(#{password},#{state},#{code},#{mail},#{registerTime},sno=#{sno})
   </insert>
 </mapper>

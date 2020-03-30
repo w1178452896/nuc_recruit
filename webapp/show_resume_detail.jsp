@@ -107,12 +107,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="content">
     <!--头像和基本信息-->
     <div class="head">
-        <span><img src="/pic/${resume.personPic }"></span><br>
+        <span><img src="${pageContext.request.contextPath}/upload/${resume.personPic }"></span><br>
         <span id="name"><h1>${resume.name }</h1></span><br>
 
         <div class="group-content">
             <span>${educationExperience.major } - ${educationExperience.school }</span><br>
-            <span>${resume.sex } ︳生日：${birthday } ︳${educationExperience.education }  ︳工作年限：${wy } ︳${resume.city }   </span><br>
+            <span>${resume.sex } ︳生日：${birthday } ︳${educationExperience.education }  实习经验：${wy } ︳${resume.city }   </span><br>
             <span>${resume.phone } ︳${resume.mail }  </span>
         </div>
         <hr class="hr">

@@ -52,15 +52,15 @@ public class PositionManagementController {
 			salary = "20k以上";
 
 		if (experiencenumber.equals("1"))
-			experience = "应届毕业生";
+			experience = "无";
 		else if (experiencenumber.equals("2"))
-			experience = "3年及以下";
+			experience = "1-3月";
 		else if (experiencenumber.equals("3"))
-			experience = "3-5年";
+			experience = "3-6月";
 		else if (experiencenumber.equals("4"))
-			experience = "5-10年";
+			experience = "6-12月";
 		else if (experiencenumber.equals("5"))
-			experience = "10年以上";
+			experience = "1年以上";
 		else
 			experience = "不要求";
 

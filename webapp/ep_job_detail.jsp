@@ -43,7 +43,7 @@
  				<ul>
  					<!--logo--> 
  					<li class="logo">
- 						<img src="images/login.png"></li>
+<%-- 						<img src="images/login.png"></li>--%>
  					<!--导航--> 
  					<li class="nav-right">
  						<a href="${basePath}findPositionByCid.action?state=1&currentPage=1" >简历管理</a>
@@ -93,7 +93,7 @@
  						<br/> 
  						<span>工作地点：${position.workplace}</span>
  						<br/> 
- 						<span>工作经验：${experience}</span>
+ 						<span>实习经验：${experience}</span>
  						<br/> 
  						<span>学历要求：${eduRequest}</span>
  						<br/> 
