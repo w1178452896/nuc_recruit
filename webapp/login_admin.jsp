@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="description" content="求职招聘网站">
 	<meta name="keywords" content="求职、招聘">
 	<meta http-equiv="content-type" content="text/html;charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="css/sign.css">
+	<link rel="stylesheet" type="text/css" href="css/sign_admin.css">
 	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
 	<!--[if lt IE 9]> 
 	<script> 
@@ -45,15 +45,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<section class="sign-content">
 		<!-- 登录框表头 -->
 		<ul class="sign-nav">
-			<li class="li-active" id="type">学生登录</li>
-			<li>企业登录</li>
+			<li  id="type">管理员登录</li>
 		</ul>
 		<!-- 登录框左边 -->
 		<div class="sign-left">
-			<form id="loginForm" class="sign-form" action="${pageContext.request.contextPath}/login.action" method="post">
-				<input type="hidden" value="" name="type" id="iptType">
-				<input type="email" class="ipt" placeholder="请输入邮箱或学号" id="email" name="mail"><br/>
-				<i class="warn-tips">请输入已验证的邮箱</i>
+			<form id="loginForm" class="sign-form" action="${pageContext.request.contextPath}/adminLogin.action" method="post">
+				<input type="email" class="ipt" placeholder="请输入邮箱或学号" id="email" name="username"><br/>
+				<i class="warn-tips">请输入用户名</i>
 				<input type="password" class="ipt" placeholder="请输入密码" id="pwd" name="password"><br/>
 				<i class="warn-tips">请输入密码</i>
 				<input type="text" placeholder="请输入验证码" class="ipt verify-code-ipt" name="" id="vertify">
@@ -67,27 +65,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<i class="errorTip show">${errors }</i>
 					</c:forEach>
 				</c:if>
-				<a href="javascript:void(0)" class="forget-pwd">忘记密码？</a>
 				<input type="button" value="登录" class="ipt btn" id="login">
 			</form>
 			<form action="" method="post" id="reroateForm"></form>
-			<p class="account">还没有账号？<a href="register.jsp">立即注册<span class="icon-go">&rarr;</span></a></p>
+
 		</div>
-		<!-- 登录框右边 -->
-		<div class="sign-right">
-			<div>
-				<p>使用以下账号直接登录</p>
-				<!-- <a href="javascript:void(0)" class="icon-weibo">
-					<img alt="微博" src="images/sign/icon-weibo.png">
-				</a> -->
-				<a href="${pageContext.request.contextPath}/loginByQq.action" class="icon-qq">
-					<img alt="qq" src="images/sign/icon-qq.png">
-				</a>
-				<!-- <a href="javascript:void(0)" class="icon-weichat">
-					<img alt="微信" src="images/sign/icon-wechat.png">
-				</a> -->
-			</div>
-		</div>
+
 	</section>
 	<footer>
 		<p class="footer">——中北大学校园招聘——</p>

@@ -29,14 +29,7 @@ $(function(){
 		window.localStorage.setItem("pwd",$("#pwd").val());
 		$("#reroateForm").submit();
 	});
-	var liActive = window.localStorage.getItem("liActive");
-	if(liActive == "学生登录"){
-		$(".sign-nav li").eq(0).addClass("li-active").siblings().removeClass("li-active");
-		$(".sign-nav li").eq(0).attr("id","type").siblings().attr("id","");
-	}else{
-		$(".sign-nav li").eq(1).addClass("li-active").siblings().removeClass("li-active");
-		$(".sign-nav li").eq(1).attr("id","type").siblings().attr("id","");
-	}
+
 	/*if(result !== ""){
 		showTip(warnTips[2],"账号与密码不匹配");
 	}*/
@@ -45,17 +38,6 @@ $(function(){
 		element.innerText = tip;
 		element.style.display = "block";
 	}
-
-	$(".sign-nav li").click(function(){
-		$(this).addClass("li-active").siblings().removeClass("li-active");
-		$(this).attr("id","type").siblings().attr("id","");
-		$(".warn-tips").text('');
-		window.localStorage.setItem("email","");
-		window.localStorage.setItem("pwd","");
-		$("#email").val();
-		$("#pwd").val();
-		window.localStorage.setItem("liActive",$(this).text());
-	});
 
 	//三者是否为空验证
 	$("#email").blur(function(){
@@ -111,12 +93,6 @@ $(function(){
 		var pwd = $("#pwd").val();
 		var vertify = $("#vertify").val();
 		var type = $("#type").html();
-		if(type == "学生登录" || type == "个人用户绑定"){
-			$("#iptType").val("0");
-		}
-		else if(type == "企业登录" || type == "企业用户绑定"){
-			$("#iptType").val("1");
-		}
 		if(email === ""){
 			showTip(warnTips[0],"请输入邮箱");
 			return false;
@@ -133,31 +109,6 @@ $(function(){
 			showTip(warnTips[2],"验证码不正确");
 			return false;
 		}
-		window.localStorage.setItem("email",$("#email").val());
-		window.localStorage.setItem("pwd",$("#pwd").val());
-	/*		$.ajax({
-			url:"login.action",
-			type:"post",
-			data:{"mail":email,"password":pwd,"type":$("#iptType").val()},
-			dataType:"string",
-			success:function(data){
-				if(data == "error"){
-					showTip(warnTips[2],"账号与密码不匹配");
-				}
-				else if(data == "register_active_tip"){
-					window.location.href = "register_active_tip.jsp";
-				}
-				else if(data == "register_user_info"){
-					window.location.href = "register_user_info.jsp";
-				}
-				else if(data == "user_index"){
-					window.location.href = "user_index.jsp";
-				}
-			},
-			error:function(){
-				showTip(warnTips[2],"登录失败");
-			}
-		});*/
 		$("#loginForm").submit();
 	}
 });

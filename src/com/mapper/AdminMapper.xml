@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.AdminMapper" >
+	<select id="getAll" parameterType="int" resultType="com.po.Admin">
+		select * from admin
+	</select>
+	
+	<insert id="insert" parameterType="com.po.Admin">
+		insert into admin (username,password,realName,desc,createDate)
+		values (#{username},#{password},#{realName},#{desc},#{createDate}})
+	</insert>
+	
+	<update id="update" parameterType="com.po.Admin">
+		update admin set username=#{username},password=#{password},realName=#{realName},
+		desc=#{desc},createDate=#{createDate}
+		where id=#{id}
+	</update>
+	
+	<select id="findByUserName" parameterType="String" resultType="com.po.Admin">
+		select * from admin where username=#{username}
+	</select>
+    
+
+  	
+</mapper>

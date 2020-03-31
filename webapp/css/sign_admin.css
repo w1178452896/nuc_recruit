@@ -1,0 +1,196 @@
+@charset "UTF-8";
+/*common*/
+/*问题：HTML5兼容性不好，如何解决，表单的placeholder不能用怎么替换*/
+body {
+  font-size: 16px;
+  font-family: "Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica; }
+
+body, header, section, footer, div, ul, li, input, img, a {
+  margin: 0;
+  padding: 0;
+  color: #655f5f; }
+
+header, section, footer {
+  display: block; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #f3c7c9; }
+
+/*sign*/
+.logo {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: 300px;
+  height: 150px; }
+
+.sign-header {
+  width: 100%;
+  height: 300px;
+  background-color: #f3c7c9; }
+
+.sign-content {
+  position: relative;
+  width: 600px;
+  overflow: hidden;
+  margin: -150px auto 0 auto;
+  background: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff #fff #f1f0f0 #f1f0f0;
+  box-shadow: 5px -5px 12px #ebebeb;
+  border-radius: 10px; }
+  .sign-content::before {
+    content: "";
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 0;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #F1F1F1 #fff #fff #F1F1F1;
+    border-radius: 3px 0 0;
+    -webkit-border-radius: 3px 0 0;
+    -moz-border-radius: 3px 0 0;
+    z-index: 2; }
+  .sign-content::after {
+    content: "";
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    width: 0;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #c8c2c2;
+    z-index: 1; }
+
+.sign-nav {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  /*注册页面代码*/ }
+  .sign-nav .li-active {
+    border-right: 1px solid #f5d9da;
+    background-color: #fff;
+    color: #000; }
+  .sign-nav li {
+    float: left;
+    display: inline-block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #f5d9da; }
+  .sign-nav .register-li {
+    width: 100%;
+    color: #fff;
+    height: 50px;
+    line-height: 50px; }
+
+.sign-left {
+  padding: 20px 20px 50px; }
+
+.sign-left {
+  width: 310px;
+  margin: 0 auto}
+  .sign-left input {
+    box-sizing: content-box;
+    border: 1px solid #e0dede;
+    font-size: 15px;
+    margin-top: 20px;
+    outline: 0; }
+    .sign-left input:focus {
+      border-color: #f5b5b7; }
+  .sign-left .ipt {
+    height: 40px;
+    width: 276px;
+    line-height: 40px;
+    padding: 0 12px; }
+  .sign-left .warn-tips,.sign-left .errorTip {
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+    display: none;
+    margin-top: 3px;
+    line-height: 18px;
+    padding-left: 20px;
+    color: #fd5f39;
+    background: url(../images/sign/warning.png) left center no-repeat; }
+    .sign-left .show{
+    	display: block;
+    }
+  .sign-left .verify-code-ipt {
+    width: 175px;}
+  .sign-left img {
+    display: inline-block;
+    vertical-align: middle;
+    border: none; }
+  .sign-left .verify-code {
+    height: 42px;
+    width: 70px; }
+  .sign-left .icon-roate {
+    height: 36px;
+    width: 25px;
+    cursor: pointer; }
+  .sign-left .forget-pwd {
+    padding-top: 10px;
+    color: #f3c7c9;
+    font-size: 14px;
+    float: right;
+    padding-right: 10px; }
+  .sign-left .type {
+    width: 115px;
+    margin-right: 0;
+    background-color: #fff; }
+  .sign-left .findwork {
+    margin-right: 20px; }
+  .sign-left .agreement {
+    font-size: 14px; }
+    .sign-left .agreement input {
+      margin-right: 5px;
+      vertical-align: text-bottom;
+      margin-bottom: 2px;
+      margin-bottom: -2px\9; }
+  .sign-left .btn {
+    height: 45px;
+    line-height: 45px;
+    font-size: 20px;
+    color: #fff;
+    border: 1px solid #f3c7c9;
+    border-radius: 5px;
+    webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-color: #f3c7c9;
+    cursor: pointer; }
+
+/*账号登录链接*/
+.account {
+  font-size: 14px;
+  text-align: center; }
+  .account a {
+    text-decoration: underline;
+    color: #f3c7c9;
+    font-size: 16px; }
+  .account span {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border: 1px solid #f3c7c9; }
+
+
+.footer {
+  margin-top: 50px;
+  text-align: center; }
+
+/*注册页面账号登录链接*/
+.hasAccount {
+  text-align: center; }

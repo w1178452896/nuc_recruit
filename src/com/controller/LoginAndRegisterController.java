@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.NotNull;
 
+import com.po.Admin;
+import com.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +23,7 @@ import com.services.UserService;
 import com.tools.ServiceException;
 
 /**
- * 个人和企业登录注册
+ * 个人和企业登录注册,管理员登录
  * @author superJJ
  *
  */
@@ -35,6 +38,9 @@ public class LoginAndRegisterController {
 	
 	@Autowired
 	CompanyInfoService companyInfoService;
+
+	@Autowired
+	AdminService adminService;
 		
 	
 	
@@ -227,4 +233,36 @@ public class LoginAndRegisterController {
 		session.invalidate();//销毁session
 		return "login";
 	}
+
+	/**
+	 * 管理员登录页面
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/admin")
+	public String adminLoginPage(HttpSession session) throws Exception {
+		return "login_admin";
+	}
+	/**
+	 * 管理员登录页面
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/adminLogin")
+	public String adminLogin(Model model, HttpSession session, @NotNull String username,@NotNull  String password) throws Exception {
+		Admin admin = adminService.findByUserName(username);
+		if (admin!=null){
+			if(password.equals(admin.getPassword())){
+				model.addAttribute("errors", "登录成功！");
+			}else{
+				model.addAttribute("errors", "用户名密码不匹配！");
+			}
+		}else {
+			model.addAttribute("errors", "用户名不存在！");
+		}
+		return "login_admin";
+	}
+
 }
