@@ -93,6 +93,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<p class="footer">——中北大学校园招聘——</p>
 	</footer>
 	
-	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/login_admin.js"></script>
   </body>
 </html>
