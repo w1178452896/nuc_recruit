@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 30/03/2020 20:04:58
+ Date: 31/03/2020 14:55:30
 */
 
 SET NAMES utf8mb4;
@@ -307,7 +307,8 @@ INSERT INTO `position_resume` VALUES (00000001, 00000015, '2016-08-26', 'w');
 INSERT INTO `position_resume` VALUES (00000001, 00000016, '2016-08-26', 'r');
 INSERT INTO `position_resume` VALUES (00000029, 00000018, '2016-09-02', 's');
 INSERT INTO `position_resume` VALUES (00000001, 00000018, '2016-09-02', 's');
-INSERT INTO `position_resume` VALUES (00000029, 00000032, '2020-03-22', 'w');
+INSERT INTO `position_resume` VALUES (00000029, 00000032, '2020-03-22', 'e');
+INSERT INTO `position_resume` VALUES (00000086, 00000032, '2020-03-30', 'e');
 
 -- ----------------------------
 -- Table structure for practical_experience
