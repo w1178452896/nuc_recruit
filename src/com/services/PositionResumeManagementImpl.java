@@ -2,14 +2,12 @@ package com.services;
 import java.util.List;
 import java.util.Map;
 
+import com.po.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mapper.PositionResumeManagementMapper;
-import com.po.PersonalResume;
-import com.po.PositionResume;
-import com.po.PositionResumeManagement;
-import com.po.ShowPositionResume;
+
 /**
  * @author lcy
  * @time 2016/7/8
@@ -68,6 +66,18 @@ public class PositionResumeManagementImpl implements PositionResumeManagementSer
 		}
 		return personalResume;
 	}
+
+	@Override
+	public ShowCompanyResume findCompanyResume(ShowCompanyResume showCompanyResume) throws Exception {
+		return this.positionResumeManagementMapper.findCompanyResume(showCompanyResume);
+	}
+
+	@Override
+	public int findCompanyResumeCount(ShowCompanyResume showCompanyResume) throws Exception {
+		return this.positionResumeManagementMapper.findCompanyResumeCount(showCompanyResume);
+
+	}
+
 	@Override
 	public void updatePositionResume(Map<?, ?> map) throws Exception {
 		this.positionResumeManagementMapper.updatePositionResume(map);
@@ -75,5 +85,10 @@ public class PositionResumeManagementImpl implements PositionResumeManagementSer
 	@Override
 	public void insertPositionResume(PositionResume positionResume){
 		this.positionResumeManagementMapper.insertPositionResume(positionResume);
+	}
+
+	@Override
+	public List<UserResume> findUserResume() {
+		return this.positionResumeManagementMapper.findUserResume();
 	}
 }

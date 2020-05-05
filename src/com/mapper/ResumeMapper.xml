@@ -51,7 +51,7 @@
  <select id="findResume" parameterType="ResumeCondition" resultType="Resume">
  	 select uid,name,sex,nativePlace,birthday,
  	   (
-		case education 
+		case education
 		when '1' then '大专'
 		when '2' then '本科'
 		when '3' then '硕士'
@@ -59,7 +59,7 @@
 		when '5' then '其他'
 		else '其他' end) education,
 		(
-		case  workYear 
+		case  workYear
 		when '1' then '无'
 		when '2' then '1-3月'
 		when '3' then '3-6月'
@@ -70,10 +70,35 @@
 		introduction,exceptedCity
  	 from
  	 <include refid="findResumeSql"/>
- 	 order by sum desc limit #{startIndex} ,#{pageSize}       
+ 	 order by sum desc limit #{startIndex} ,#{pageSize}
  </select>
  <select id="findResumeCount" parameterType="ResumeCondition" resultType="int">
 	 select count(*) from
 	 <include refid="findResumeSql"/>
 </select>
+
+	<select id="findStudentInfo" parameterType="ResumeCondition" resultType="StudentInfo">
+		select username,password,sno,uid,name,sex,nativePlace,birthday,
+		(
+		case education
+		when '1' then '大专'
+		when '2' then '本科'
+		when '3' then '硕士'
+		when '4' then '博士'
+		when '5' then '其他'
+		else '其他' end) education,
+		(
+		case  workYear
+		when '1' then '无'
+		when '2' then '1-3月'
+		when '3' then '3-6月'
+		when '4' then '6-12月'
+		when '5' then '1年以上'
+		else '其他' end) workYear,
+		exceptedSalary,positionApplied,personPic,
+		introduction,exceptedCity
+		from
+		<include refid="findResumeSql"/>
+		order by sum desc limit #{startIndex} ,#{pageSize}
+	</select>
 </mapper>

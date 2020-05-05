@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.PositionMapper">
+<select id="findPosition" parameterType="Position" resultType="Position">
+	select * from position
+	<where>
+		<if test="cid!=null">
+		and cid=#{cid}
+		</if>
+		<if test="position!=null">
+		and position=#{position}
+		</if>
+		<if test="workplace!=null">
+		and workplace=#{workplace}
+		</if>
+		<if test="experience!=null">
+		and experience=#{experience}
+		</if>
+		<if test="salary!=null">
+		and salary=#{salary}
+		</if>
+		<if test="eduRequest!=null">
+		and eduRequest=#{eduRequest}
+		</if>
+		<if test="classification!=null">
+		and classification=#{classification}
+		</if>
+	</where>
+</select>
+
+<select id="findPositionCount" parameterType="Position" resultType="int">
+	select count(*) from position
+	<where>
+		<if test="position!=null">
+		and position=#{position}
+		</if>
+		<if test="workplace!=null">
+		and workplace=#{workplace}
+		</if>
+		<if test="experience!=null">
+		and experience=#{experience}
+		</if>
+		<if test="salary!=null">
+		and salary=#{salary}
+		</if>
+		<if test="eduRequest!=null">
+		and eduRequest=#{eduRequest}
+		</if>
+		<if test="classification!=null">
+		and classification=#{classification}
+		</if>
+	</where>
+</select>
+
+
+<select id="findAllPosition" resultType="Position">
+	select * from position
+</select>
+
+<!--根据关键词，地点，工作经验，学历要求，薪水查找简历  -->
+<select id="findPositionByCondition" parameterType="Position" resultType="Position">
+	select * from 
+	<include refid="FPBCC"/>
+<!-- 	order by releaseDate desc
+	limit #{startIndex},#{pageSize}  -->
+</select>
+<select id="findPositionByConditionCount" parameterType="Position" resultType="int">
+   select count(*) from
+   <include refid="FPBCC"/>
+</select>
+<sql id="FPBCC">
+	(select * from position
+	<where>
+	    and state = '1'
+		<if test="position!=null and position!=''">
+		and position like "%${position}%"
+		</if>
+		<if test="workplace!=null and workplace!=''">
+		and workplace=#{workplace}
+		</if>
+		<if test="experience!=null and experience!=''">
+		and experience=#{experience}
+		</if>
+		<if test="salary!=null and salary!=''">
+		and salary=#{salary}
+		</if>
+		<if test="eduRequest!=null">
+		and eduRequest=#{eduRequest}
+		</if>
+	</where>
+	)tmp
+</sql>
+</mapper>

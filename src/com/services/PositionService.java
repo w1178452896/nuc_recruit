@@ -37,6 +37,6 @@ public interface PositionService {
 	 * @return int
 	 */
 	public int findPositionByConditionCount(Position position);
-	
 
+	public void deleteByPid(int pid);
 }

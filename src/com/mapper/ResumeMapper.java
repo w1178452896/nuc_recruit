@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.po.Resume;
 import com.po.ResumeCondition;
+import com.po.StudentInfo;
 
 /**
  * ResumeMapper
@@ -47,4 +48,7 @@ public interface ResumeMapper {
 	 * @return int
 	 */
 	public int findResumeCount(ResumeCondition resumeCondition);
+
+	public List<StudentInfo> findStudentInfo(ResumeCondition resumeCondition);
+
 }

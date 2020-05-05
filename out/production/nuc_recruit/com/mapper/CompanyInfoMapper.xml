@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CompanyInfoMapper" >
+	<select id="findCompanyInfo" parameterType="int" resultType="com.po.CompanyInfo">
+		select * from Companyinfo where ciid=#{ciid}
+	</select>
+	
+	<insert id="addCompanyInfo" parameterType="com.po.CompanyInfo">
+		insert into Companyinfo (ciid,companyname,location,address,industry,contacts,
+		sex,phone,telephone,companyInstruction,logo) 
+		values (#{ciid},#{companyName},#{location},#{address},#{industry},#{contacts},
+		#{sex},#{phone},#{telephone},#{companyInstruction},#{logo})
+	</insert>
+	
+	<update id="updateCompanyInfo" parameterType="com.po.CompanyInfo">
+		update companyinfo set companyName=#{companyName},location=#{location},address=#{address},
+		industry=#{industry},contacts=#{contacts},sex=#{sex},phone=#{phone},
+		telephone=#{telephone},companyInstruction=#{companyInstruction},logo=#{logo}
+		where ciid=#{ciid}
+	</update>
+	
+	<select id="findCompanyInfoByName" parameterType="String" resultType="com.po.CompanyInfo">
+		select * from Companyinfo where companyName=#{companyName}
+	</select>
+    
+
+  	
+</mapper>

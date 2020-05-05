@@ -39,6 +39,9 @@ public class PositionServiceImpl implements PositionService{
 		return positionMapper.findPositionByConditionCount(position);
 	}
 
-	
+	@Override
+	public void deleteByPid(int pid) {
+		positionMapper.deleteByPid(pid);
+	}
 	
 }

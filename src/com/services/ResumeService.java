@@ -1,7 +1,12 @@
 package com.services;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import com.po.Resume;
 import com.po.ResumeCondition;
+import com.po.StudentInfo;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public interface ResumeService {
 	/**
 	 * 查找全部简历
@@ -42,4 +47,12 @@ public interface ResumeService {
 	 * @throws Exception
 	 */
 	public int findResumeCount(ResumeCondition resumeCondition) throws Exception;
+
+	public List<StudentInfo> findStudentInfo(ResumeCondition resumeCondition);
+
+	File exportExcelTemplate() throws IOException;
+
+	void importCreate(CommonsMultipartFile request)throws IOException;
+
+	File exportEmployment() throws Exception;
 }

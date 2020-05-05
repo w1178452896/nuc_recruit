@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--分页--> 
+<mapper namespace="com.mapper.PositionResumeManagementMapper">
+	<sql id="findPositionByCidPageListSql">
+	   (select position.*, 
+		   (select count(uid)   from position_resume where position_resume.pid = position.pid) as candidatesNumber ,
+		   (select count(uid)  from position_resume where position_resume.pid = position.pid and position_resume.state='w') as invitationNumber 
+		from position 
+		<where>
+		    and position.cid =#{position.cid}
+		    <if test="position.state!=null and position.state!=''">
+		 	   and position.state=#{position.state}
+		    </if>
+		    <if test="position.department!=null and position.department!=''">
+		 	   and position.department =#{position.department}
+		    </if>
+		</where>
+		) tmp
+	</sql>
+    <select id = "findPositionByCid" parameterType="PositionResumeManagement" resultMap="PRM">
+		select * from
+		<include refid="findPositionByCidPageListSql"/>
+		limit #{startIndex} ,#{pageSize} 
+	</select>
+	<select id="findPositionByCidCount" parameterType="PositionResumeManagement" resultType="int">
+		select count(pid) from
+		<include refid="findPositionByCidPageListSql"/>
+	</select>
+	<resultMap id="PRM" type="PositionResumeManagement" >
+		<id column="pid" property="pid"/>
+		<result column="invitationNumber" property="invitationNumber"/>
+		<result column="candidatesNumber" property="candidatesNumber"/>
+		<association property="position" javaType="com.po.Position">
+			<result column="cid" property="cid"/>
+			<result column="position" property="position"/>
+			<result column="workplace" property="workplace"/>
+			<result column="classification" property="classification"/>
+			<result column="department" property="department"/>
+			<result column="salary" property="salary"/>
+			<result column="eduRequest" property="eduRequest"/>
+			<result column="experience" property="experience"/>
+			<result column="statement" property="statement"/>
+			<result column="email" property="email"/>
+			<result column="browsingNumber" property="browsingNumber"/>
+			<result column="releaseDate" property="releaseDate"/>
+			<result column="state" property="state"/>
+			<result column="deadline" property="deadline"/>
+		</association>
+	</resultMap>
+	
+	<!--根据职位id搜索对应的简历，分页 -->
+	<sql id="positionResumeListSql">
+		(select p.pid,
+		    (select position.position from position where position.pid = #{pid}) as position,
+			(select count(position_resume.uid) from position_resume where position_resume.state='w') as pendingNumber,
+			(select count(position_resume.uid) from position_resume where position_resume.state='s') as invitationNumber,
+			(select count(position_resume.uid) from position_resume where position_resume.state='r') as refuseNumber
+		,r.name,r.uid,r.sex,(
+		case  r.education 
+		when '1' then '大专'
+		when '2' then '本科'
+		when '3' then '硕士'
+		when '4' then '博士'
+		when '5' then '其他'
+		else '其他' end) education,
+		(
+		case  r.workYear 
+		when '1' then '无'
+		when '2' then '1-3月'
+		when '3' then '3-6月'
+		when '4' then '6-12月'
+		when '5' then '1年以上'
+		else '其他' end) workYear,
+		p.deliveryDate from position_resume p,resume r where 
+		p.pid=#{pid} and p.state=#{state} and r.uid=p.uid) tmp
+	</sql>
+	<select id="findPositionResume" parameterType="ShowPositionResume" resultMap="FPR">
+		select * from 
+		<include refid="positionResumeListSql"/>
+		limit #{startIndex} ,#{pageSize}
+	</select>
+	<select id="findPositionResumeCount" parameterType="ShowPositionResume" resultType="int">
+		select count(*) from
+		<include refid="positionResumeListSql"/>
+	</select>
+	<resultMap type="com.po.ShowPositionResume" id="FPR">
+		<id column="pid" property="pid"/>
+		<result column="position" property="position"/>
+		<result column="pendingNumber" property="pendingNumber"/>
+		<result column="invitationNumber" property="invitationNumber"/>
+		<result column="refuseNumber" property="refuseNumber"/>
+		<collection property="positionResume" ofType="com.po.PositionResume">
+			<id column="uid" property="uid"/>
+			<result column="sex" property="sex"/>
+			<result column="name" property="name"/>
+			<result column="education" property="education"/>
+			<result column="workYear" property="workYear"/>
+			<result column="deliveryDate" property="deliveryDate"/>
+		</collection>
+	</resultMap>
+	
+	<!-- 查找出个人简历的所有信息 -->
+	<select id="findPersonalResume" resultMap="findResumeByUidMap">
+		select *,education_experience.education as educationExperienceEdu
+	    from resume as r left join project on r.uid=project.uid 
+                     left join major_skill on  r.uid=major_skill.uid
+                     left join practical_experience on r.uid=practical_experience.uid
+                     left join education_experience on r.uid=education_experience.uid where r.uid in
+         <foreach collection="list" item="item" open="(" separator="," close=")">
+         	#{item}
+         </foreach>
+         order by education_experience.etime desc
+	</select>
+	<resultMap type="com.po.PersonalResume" id="findResumeByUidMap">
+		<id column="uid" property="uid"/>
+		<result column="name" property="name"/>
+		<result column="sex" property="sex"/>
+		<result column="nativePlace" property="nativePlace"/>
+		<result column="birthday" property="birthday"/>
+		<result column="education" property="education"/>
+		<result column="workYear" property="workYear"/>
+		<result column="phone" property="phone"/>
+		<result column="idCard" property="idCard"/>
+		<result column="mail" property="mail"/>
+		<result column="city" property="city"/>
+		<result column="personPic" property="personPic"/>
+		<result column="introduction" property="introduction"/>
+		<result column="positionApplied" property="positionApplied"/>
+		<result column="exceptedCity" property="exceptedCity"/>
+		<result column="exceptedSalary" property="exceptedSalary"/>
+		<result column="postscript" property="postscript"/>
+		<collection property="majorSkillList" ofType="com.po.MajorSkill">
+			<id column="mid" property="mid"/>
+			<result column="skill" property="skill"/>
+		</collection>
+		<collection property="projectList" ofType="com.po.Project">
+			<id column="pid" property="pid"/>
+			<result column="project" property="project"/>
+			<result column="position" property="position"/>
+			<result column="stime" property="stime"/>
+			<result column="etime" property="etime"/>
+			<result column="statement" property="statement"/>
+		</collection>
+		<collection property="practicalExperienceList" ofType="com.po.PracticalExperience">
+			<id column="peid" property="peid"/>
+			<result column="company" property="company"/>
+			<result column="position" property="position"/>
+			<result column="stime" property="stime"/>
+			<result column="etime" property="etime"/>
+		</collection>
+		<collection property="educationExperienceList" ofType="com.po.EducationExperience">
+			<id column="eid" property="eid"/>
+			<result column="school" property="school"/>
+			<result column="college" property="college"/>
+			<result column="major" property="major"/>
+			<result column="educationExperienceEdu" property="education"/>
+			<result column="stime" property="stime"/>
+			<result column="etime" property="etime"/>
+			<result column="statement" property="statement"/>
+		</collection>
+	</resultMap>
+	<!-- 更新简历状态 -->
+	<update id="updatePositionResume" parameterType="Map">
+		update position_resume set state=#{state} where uid in
+		 <foreach collection="uidList" item="item" open="(" separator="," close=")">
+         	#{item}
+        </foreach>
+	</update>
+	<insert id="insertPositionResume" parameterType="PositionResume">
+		insert into position_resume(pid,uid,deliveryDate,state) values(#{pid},#{uid},#{deliveryDate},#{state})
+	</insert>
+</mapper>

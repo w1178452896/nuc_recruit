@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.UserMapper">
+  <resultMap type="com.po.User" id="userResultMap">
+  	<id column="uid" property="uid"/>
+  	<result column="password" property="password"/>
+  	<result column="state" property="state"/>
+  	<result column="code" property="code"/>
+  	<result column="mail" property="mail"/>
+  	<result column="registerTime" property="registerTime"/>
+  	<result column="sno" property="sno"/>
+  	<association property="resume" javaType="com.po.Resume">
+  		<id column="uid" property="uid"/>
+  		<result column="name" property="name"/>
+  		<result column="sex" property="sex"/>
+  		<result column="nativePlace" property="nativePlace"/>
+  		<result column="birthday" property="birthday"/>
+  		<result column="education" property="education"/>
+  		<result column="workYear" property="workYear"/>
+  		<result column="phone" property="phone"/>
+  		<result column="idCard" property="idCard"/>
+  		<result column="mail" property="mail"/>
+  		<result column="city" property="city"/>
+  		<result column="personPic" property="personPic"/>
+  		<result column="introduction" property="introduction"/>
+  		<result column="positionApplied" property="positionApplied"/>
+  		<result column="exceptedCity" property="exceptedCity"/>
+  		<result column="exceptedSalary" property="exceptedSalary"/>
+  		<result column="postscript" property="postscript"/>
+  	</association>
+
+  	<collection property="educationExperience" ofType="com.po.EducationExperience">
+  		<id column="eid" property="eid"/>
+  		<result column="uid" property="uid"/>
+  		<result column="school" property="school"/>
+  		<result column="college" property="college"/>
+  		<result column="major" property="major"/>
+  		<result column="education" property="education"/>
+  		<result column="stime" property="stime"/>
+  		<result column="etime" property="etime"/>
+  		<result column="statement" property="statement"/>
+  	</collection>
+
+  	<collection property="project" ofType="com.po.Project">
+  		<id column="pid" property="pid"/>
+  		<result column="uid" property="uid"/>
+  		<result column="project" property="project"/>
+  		<result column="position" property="position"/>
+  		<result column="stime" property="stime"/>
+  		<result column="etime" property="etime"/>
+  		<result column="statement" property="statement"/>
+  	</collection>
+
+  	<collection property="practicalExperience" ofType="com.po.PracticalExperience">
+  		<id column="peid" property="peid"/>
+  		<result column="uid" property="uid"/>
+  		<result column="company" property="company"/>
+  		<result column="position" property="position"/>
+  		<result column="stime" property="stime"/>
+  		<result column="etime" property="etime"/>
+  	</collection>
+
+  	<collection property="majorSkill" ofType="com.po.MajorSkill">
+  		<id column="mid" property="mid"/>
+  		<result column="uid" property="uid"/>
+  		<result column="skill" property="skill"/>
+  	</collection>
+  </resultMap>
+  
+  <select id="findUserByMail" parameterType="String" resultMap="userResultMap">
+  select * from user left join project on user.uid=project.uid 
+  left join major_skill on user.uid=major_skill.uid 
+  left join practical_experience on user.uid=practical_experience.uid 
+  left join resume on user.uid=resume.uid 
+  left join education_experience on user.uid=education_experience.uid where user.mail=#{mail}
+  </select>
+ 
+  <select id="findUserById" parameterType="int" resultType="User">
+  	select * from user where uid=#{uid}
+  </select>
+  <select id="findAllUser" resultType="User">
+  	select * from user
+  </select>
+  
+  <delete id="deleteUser" parameterType="int">
+	 delete from user where uid=#{uid}
+  </delete>
+  
+  <update id="updateUser" parameterType="User">
+ 	 update user set password=#{password},state=#{state},code=#{code},mail=#{mail},registerTime=#{registerTime},sno=#{sno} where uid=#{uid}
+  </update>
+  
+  <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
+	 insert into user(password,state,code,mail,registerTime,sno) values(#{password},#{state},#{code},#{mail},#{registerTime},sno=#{sno})
+  </insert>
+</mapper>

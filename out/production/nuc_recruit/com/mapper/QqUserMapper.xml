@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.QqUserMapper" >
+    <!-- 查找openid是否存在 -->
+    <select id="findQq" parameterType="com.po.QqUser" resultType="com.po.QqUser">
+    	select type from qquser where openId = #{openId}
+    </select>
+	<select id="findQqUser" parameterType="com.po.QqUser" resultType="com.po.QqUser">
+		select password,uid as id,mail ,qquser.type from user, qquser where user.uid = qquser.id  and qquser.openId = #{openId}
+	</select> 
+	<select id="findQqCompany" parameterType="com.po.QqUser" resultType="com.po.QqUser">
+		select password,cid as id,mail ,qquser.type from company ,qquser where company.cid = qquser.id  and qquser.openId = #{openId}
+	</select> 		
+	
+	<!-- 查找用户是否存在 -->
+	<select id="findUser" parameterType="com.po.QqUser" resultType="com.po.QqUser">
+		 select  password,uid as id,mail from user where password=#{password} and mail=#{mail}
+	</select> 
+	<select id="findCompany" parameterType="com.po.QqUser" resultType="com.po.QqUser">
+	     select password,cid as id,mail  from company  where password=#{password} and mail=#{mail}
+	</select> 	
+	
+	
+	<!-- 插入qquser数据 -->
+	<insert id="inserQqUser" parameterType="com.po.QqUser">
+		insert into qquser(openid,id,type) value(#{openId},#{id},#{type})
+	</insert>
+</mapper>

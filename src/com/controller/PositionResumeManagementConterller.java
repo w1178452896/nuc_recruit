@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.po.*;
 import net.sf.json.util.JSONStringer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.po.PersonalResume;
-import com.po.Position;
-import com.po.PositionResumeManagement;
-import com.po.ShowPositionResume;
 import com.services.CommonService;
 import com.services.PositionResumeManagementService;
 @Controller
@@ -272,4 +270,26 @@ public class PositionResumeManagementConterller {
 		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
 		else return "/resume_manage_un";
 	}
+
+	@RequestMapping("positionByUid")
+	public String uid(Model model,HttpServletResponse response,PersonalResume personalResume,Integer uid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
+
+		ShowCompanyResume spr = new ShowCompanyResume();
+		spr.setUid(uid);
+		spr.setState(state);
+		int totalRows = positionResumeManagementService.findCompanyResumeCount(spr);
+		spr.setTotalRows(totalRows);
+		if(totalRows>0){
+			spr.setCurrentPage(currentPage);
+			spr = positionResumeManagementService.findCompanyResume(spr);
+			spr.setTotalRows(totalRows);
+			spr.setCurrentPage(currentPage);
+		}
+		model.addAttribute("resume", spr);
+		if(state.equalsIgnoreCase("w")) return "/resume_manage_deal";
+		else if(state.equalsIgnoreCase("s")) return "/resume_manage_send";
+		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
+		else return "/resume_manage_un";
+	}
+
 }

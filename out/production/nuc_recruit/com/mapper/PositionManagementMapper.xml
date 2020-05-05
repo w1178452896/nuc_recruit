@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.PositionManagementMapper" >
+    
+   <insert id="addPosition" parameterType="com.po.Position" useGeneratedKeys="true" keyProperty="pid">
+	insert into position (pid,cid,position,workplace,classification,department,salary,
+	eduRequest,experience,statement,email,browsingNumber,releaseDate,deadline,state) 
+	values(#{pid},#{cid},#{position},#{workplace},#{classification},#{department},#{salary},#{eduRequest},
+	#{experience},#{statement},#{email},#{browsingNumber},#{releaseDate},#{deadline},#{state})
+	</insert>
+	
+    <select id="findPosition" parameterType="com.po.Position"
+  		 resultType="com.po.Position">
+  	   	SELECT * FROM Position where cid=#{cid} 
+  	   	limit #{startIndex} ,#{pageSize} 
+  	</select>
+  	
+  	<select id="findOnPosition" parameterType="com.po.Position"
+  		 resultType="com.po.Position">
+  	   	SELECT * FROM Position where cid=#{cid} and state=1 
+  	   	limit #{startIndex} ,#{pageSize} 
+  	</select>
+  	
+  	<select id="findOverPosition" parameterType="com.po.Position"
+  		 resultType="com.po.Position">
+  	   	SELECT * FROM Position where cid=#{cid} and state=2
+  	   	limit #{startIndex} ,#{pageSize} 
+  	</select>
+  	
+  	<select id="showPosition" parameterType="int" resultType="com.po.Position">
+  	select * from position where pid=#{pid}
+  	</select>
+  	
+  	<delete id="deletePosition">
+  	delete from position where pid in
+  	<foreach collection="array" index="index" item="pid" open="(" separator="," close=")"> 
+        #{pid} 
+    </foreach>
+  	</delete>
+	
+	<select id="countByCid" parameterType="int" resultType="int">
+	select count(pid) from position where cid=#{cid}
+	</select>
+	
+	<select id="countOnByCid" parameterType="int" resultType="int">
+	select count(pid) from position where cid=#{cid} and state=1
+	</select>
+	
+	<select id="countOverByCid" parameterType="int" resultType="int">
+	select count(pid) from position where cid=#{cid} and state=2
+	</select>
+	
+	<update id="endPosition">
+	 update  position set state=2 where pid in
+  	<foreach collection="array" index="index" item="pid" open="(" separator="," close=")"> 
+        #{pid} 
+    </foreach>
+	</update>
+	
+	
+</mapper>

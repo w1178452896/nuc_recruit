@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.CompanyMapper" >
+    
+    <select id="findCompanyByMail" parameterType="String"
+  		 resultType="com.po.Company">
+  	   	SELECT * FROM company where mail=#{mail}
+  	</select>
+  	
+  	<select id="findAllCompany"  resultType="com.po.Company">
+  	select * from company
+  	</select>
+  	
+	<insert id="addCompany" parameterType="com.po.Company" useGeneratedKeys="true" keyProperty="cid">
+	insert into company (mail,password,state,code,registerTime) values(#{mail},#{password},#{state},#{code},#{registerTime})
+	</insert>
+	
+	<update id="updatePassword" parameterType="com.po.Company">
+	update company set password=#{password} where mail=#{mail}
+	</update>
+	
+	<update id="updateState" parameterType="com.po.Company">
+	update company set state=#{state} where cid=#{cid}
+	</update>
+
+  	
+</mapper>

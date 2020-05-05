@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mapper.MajorSkillMapper">
+
+ <select id="findAllMajorSkill" parameterType="int" resultType="MajorSkill">
+  	select * from major_skill where uid=#{uid}
+ </select>
+ 
+ <insert id="insertMajorSkill" parameterType="MajorSkill">
+	insert into major_skill(uid,skill) values(#{uid},#{skill})
+ </insert>
+ 
+ <delete id="deleteMajorSkill" parameterType="int">
+	 delete from major_skill where mid=#{mid}
+ </delete>
+ 
+ <update id="updateMajorSkill" parameterType="MajorSkill">
+ 	 update major_skill set skill=#{skill} where mid=#{mid} and uid=#{uid}
+ </update>
+</mapper>

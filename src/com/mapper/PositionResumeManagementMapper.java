@@ -2,10 +2,8 @@ package com.mapper;
 import java.util.List;
 import java.util.Map;
 
-import com.po.PersonalResume;
-import com.po.PositionResume;
-import com.po.PositionResumeManagement;
-import com.po.ShowPositionResume;
+import com.po.*;
+
 /**
  * @author lcy
  */
@@ -48,4 +46,9 @@ public interface PositionResumeManagementMapper {
 	 * @param positionResumeManagement
 	 */
 	public void insertPositionResume(PositionResume positionResume);
+
+	public int findCompanyResumeCount(ShowCompanyResume showCompanyResume);
+	ShowCompanyResume findCompanyResume(ShowCompanyResume showCompanyResume);
+
+	List<UserResume> findUserResume();
 }
