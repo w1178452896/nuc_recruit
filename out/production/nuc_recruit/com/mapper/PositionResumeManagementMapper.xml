@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--分页--> 
+<!--分页-->
 <mapper namespace="com.mapper.PositionResumeManagementMapper">
 	<sql id="findPositionByCidPageListSql">
 	   (select position.*, 
@@ -171,4 +171,74 @@
 	<insert id="insertPositionResume" parameterType="PositionResume">
 		insert into position_resume(pid,uid,deliveryDate,state) values(#{pid},#{uid},#{deliveryDate},#{state})
 	</insert>
+
+	<select id="findCompanyResumeCount" parameterType="ShowCompanyResume" resultType="int">
+		select count(*)
+		from position_resume as r left join position as p on r.pid=p.pid
+		left join companyinfo c on  p.cid=c.ciid
+		where r.uid=#{uid}
+		<if test="state!=null">
+			and r.state=#{state}
+		</if>
+	</select>
+
+	<select id="findCompanyResume" resultMap="CompanyByUidMap" parameterType="ShowCompanyResume">
+		select *
+		from position_resume as r left join position as p on r.pid=p.pid
+		left join companyinfo as c on  p.cid=c.ciid
+		<where>
+			<if test="uid!=null">
+				and r.uid=#{uid}
+			</if>
+			<if test="state!=null">
+				and r.state=#{state}
+			</if>
+		</where>
+		order by r.deliverydate desc
+		limit #{startIndex} ,#{pageSize}
+	</select>
+
+	<select id="findUserResume" resultMap="UserResumeMap">
+		select *
+		from resume as r left join user as u on r.uid=u.uid
+		left join position_resume as p on r.uid=p.uid
+		left join position as pt on p.pid=pt.pid
+		left join companyinfo as c on  pt.cid=c.ciid
+		where p.state='e'
+
+	</select>
+
+	<resultMap type="com.po.UserResume" id="UserResumeMap">
+		<id column="uid" property="uid"/>
+		<result column="sno" property="sno"/>
+		<result column="name" property="name"/>
+		<result column="sex" property="sex"/>
+		<result column="position" property="position"/>
+		<result column="companyname" property="companyname"/>
+	</resultMap>
+
+	<resultMap type="com.po.ShowCompanyResume" id="CompanyByUidMap">
+		<id column="uid" property="uid"/>
+		<collection property="companyResume" ofType="com.po.CompanyResume">
+			<id column="pid" property="pid"/>
+			<result column="uid" property="uid"/>
+			<result column="state" property="state"/>
+			<result column="cid" property="cid"/>
+			<result column="position" property="position"/>
+			<result column="workplace" property="workplace"/>
+			<result column="classification" property="classification"/>
+			<result column="department" property="department"/>
+			<result column="statement" property="statement"/>
+			<result column="email" property="email"/>
+			<result column="browsingnumber" property="browsingNumber"/>
+			<result column="ciid" property="cid"/>
+			<result column="companyname" property="companyName"/>
+			<result column="location" property="location"/>
+			<result column="address" property="address"/>
+			<result column="industry" property="industry"/>
+			<result column="contacts" property="contacts"/>
+			<result column="companyinstruction" property="companyInstruction"/>
+			<result column="logo" property="logo"/>
+		</collection>
+	</resultMap>
 </mapper>

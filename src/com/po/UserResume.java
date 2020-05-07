@@ -5,6 +5,7 @@ public class UserResume{
 
 	private int uid;
 	private String sno;
+	private String name;
 	private String sex;
 	private String position;
 	private String companyname;
@@ -50,5 +51,13 @@ public class UserResume{
 
 	public void setCompanyname(String companyname) {
 		this.companyname = companyname;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

@@ -90,4 +90,8 @@
 	</where>
 	)tmp
 </sql>
+
+	<delete id="deleteByPid" parameterType="int">
+		delete from position where pid=#{pid}
+	</delete>
 </mapper>

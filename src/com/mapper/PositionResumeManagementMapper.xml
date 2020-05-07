@@ -194,9 +194,8 @@
 				and r.state=#{state}
 			</if>
 		</where>
-		limit #{startIndex} ,#{pageSize}
 		order by r.deliverydate desc
-
+		limit #{startIndex} ,#{pageSize}
 	</select>
 
 	<select id="findUserResume" resultMap="UserResumeMap">
@@ -220,9 +219,9 @@
 
 	<resultMap type="com.po.ShowCompanyResume" id="CompanyByUidMap">
 		<id column="uid" property="uid"/>
-		<collection property="positionResume" ofType="com.po.PositionResume">
-			<id column="uid" property="uid"/>
-			<result column="pid" property="pid"/>
+		<collection property="companyResume" ofType="com.po.CompanyResume">
+			<id column="pid" property="pid"/>
+			<result column="uid" property="uid"/>
 			<result column="state" property="state"/>
 			<result column="cid" property="cid"/>
 			<result column="position" property="position"/>
@@ -231,14 +230,14 @@
 			<result column="department" property="department"/>
 			<result column="statement" property="statement"/>
 			<result column="email" property="email"/>
-			<result column="browsingnumber" property="browsingnumber"/>
+			<result column="browsingnumber" property="browsingNumber"/>
 			<result column="ciid" property="cid"/>
-			<result column="companyname" property="companyname"/>
+			<result column="companyname" property="companyName"/>
 			<result column="location" property="location"/>
 			<result column="address" property="address"/>
 			<result column="industry" property="industry"/>
 			<result column="contacts" property="contacts"/>
-			<result column="companyinstruction" property="companyinstruction"/>
+			<result column="companyinstruction" property="companyInstruction"/>
 			<result column="logo" property="logo"/>
 		</collection>
 	</resultMap>

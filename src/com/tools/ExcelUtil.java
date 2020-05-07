@@ -172,13 +172,9 @@ public class ExcelUtil {
                     // 设置CELL的值
                     Object returnValue = getObjectFieldValue(headKey, data);
 
-                    if (!sdf.isEmpty() && returnValue != null) {
-                        SimpleDateFormat simpDateFormat = new SimpleDateFormat(sdf);
-                        cellValue = simpDateFormat.format(returnValue);
-                    } else {
-                        // 不包含日期格式化信息的直接得到字符串
-                        cellValue = toString(returnValue);
-                    }
+
+                    // 不包含日期格式化信息的直接得到字符串
+                    cellValue = toString(returnValue);
 
                     if (returnValue != null && returnValue instanceof Number) {
                         Number nValue = (Number) returnValue;
