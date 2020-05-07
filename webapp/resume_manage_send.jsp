@@ -178,7 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td>${positionResume.sex}</td>
                         <td>${positionResume.workYear}</td>
                         <td>${positionResume.education}</td>
-                        <td>华南农业大学</td>
+                        <td>中北大学</td>
                         <td>
                         <fmt:formatDate pattern="yyyy-MM-dd" value="${positionResume.deliveryDate}" />
                         </td>

@@ -14,7 +14,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="renderer" content="webkit">
 
-	<title>修改密码-伯乐网</title>
+	<title>修改密码-中北大学校园招聘</title>
     <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery
 /jquery-1.4.min.js"></script>
 

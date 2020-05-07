@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="renderer" content="webkit">
 
-	<title>个人简历-伯乐网</title>
+	<title>个人简历-中北大学校园招聘</title>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/layout.css">
 	<!-- 最上栏 -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/widgets.css">

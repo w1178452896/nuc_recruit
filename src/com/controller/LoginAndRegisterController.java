@@ -256,6 +256,8 @@ public class LoginAndRegisterController {
 		if (admin!=null){
 			if(password.equals(admin.getPassword())){
 				model.addAttribute("errors", "登录成功！");
+				session.setAttribute("aName",admin.getUsername());
+				return "admin/usermanage";
 			}else{
 				model.addAttribute("errors", "用户名密码不匹配！");
 			}

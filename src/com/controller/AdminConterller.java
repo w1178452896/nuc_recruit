@@ -33,7 +33,7 @@ public class AdminConterller {
 	/**
 	 * 用户信息列表
 	 */
-	@RequestMapping("/findResume")
+	@RequestMapping("/findResume11")
 	public String findResume(Model model,String keys,ResumeCondition resumeCondition,@RequestParam(value="page",defaultValue="1") Integer page) throws Exception{
 		String [] arra;
 		List<StudentInfo> resuemList = new ArrayList<StudentInfo>();
@@ -109,6 +109,14 @@ public class AdminConterller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	/**
+	 * 用户管理页面
+	 */
+	@RequestMapping("/userManage")
+	public String userManage(){
+		return "admin/usermanage";
 	}
 
 

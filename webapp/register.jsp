@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</span><br/>
 				<i class="warn-tips">请选择类型</i>
 				<span class="agreement">
-					<input type="checkbox" id="agree" checked>我已阅读并同意<a href="javascript:void(0)">《伯乐用户协议》</a>
+					<input type="checkbox" id="agree" checked>我已阅读并同意<a href="javascript:void(0)">《中北大学用户协议》</a>
 				</span>
 				<i class="warn-tips">请勾选同意协议</i>
 				<input type="button" value="注册" class="ipt btn" id="register">
@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 登录框右边 -->
 		<div class="sign-right">
 			<div>
-				<p>已有伯乐账号：</p>
+				<p>已有中北大学账号：</p>
 				<p class="account hasAccount"><a href="login.jsp">直接登录<span class="icon-go">&rarr;</span></a></p>
 				<p>使用以下账号直接登录</p>
 				<!-- <a href="javascript:void(0)" class="icon-weibo">

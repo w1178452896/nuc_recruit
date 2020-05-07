@@ -34,7 +34,7 @@ public class SendMail {
         message.setFrom(fromAddress);  
         message.addRecipient(RecipientType.TO, toAddress);  
         message.setSentDate(Calendar.getInstance().getTime());  
-        message.setSubject("伯乐网");
+        message.setSubject("中北大学校园招聘");
         message.setContent(messageText, messageType);  
   
         Transport transport = mailSession.getTransport("smtp");  

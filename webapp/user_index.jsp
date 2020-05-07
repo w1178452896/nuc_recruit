@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="renderer" content="webkit">
 
-	<title>个人主页-伯乐网</title>
+	<title>个人主页-中北大学校园招聘</title>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.3.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/layout.css">
 	<!-- 最上栏 -->
@@ -55,7 +55,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<a href="${pageContext.request.contextPath}/positionRank.action" class="current" id="5i00"    >首页</a>
 					</li>
-
+					<li>
+						<a href="${pageContext.request.contextPath}/positionByCurrentUser.action"  id="5i01"    >投递情况</a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -328,9 +330,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        <a href="http://vaio.com/">
 					            <img src="images/ad/vaio.jpg" alt="vaio"/>
 					        </a>
-					        <a href="http://www.scau.edu.cn/">
-					            <img src="images/ad/scau.jpg" alt="华南农业大学"/>
-					        </a>
 					        <a href="http://www.neusoft.com/cn/">
 					            <img src="images/ad/neusoft.jpg" alt="东软"/>
 					        </a>
@@ -348,9 +347,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					        </a>
 					        <a href="http://vaio.com/">
 					            <img src="images/ad/vaio.jpg" alt="vaio"/>
-					        </a>
-					        <a href="http://www.scau.edu.cn/">
-					            <img src="images/ad/scau.jpg" alt="华南农业大学"/>
 					        </a>
 					    </div>
 					    <div id="buttons">

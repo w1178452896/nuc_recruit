@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.po.*;
 import net.sf.json.util.JSONStringer;
@@ -272,7 +273,7 @@ public class PositionResumeManagementConterller {
 	}
 
 	@RequestMapping("positionByUid")
-	public String uid(Model model,HttpServletResponse response,PersonalResume personalResume,Integer uid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
+	public String uid(Model model,HttpServletResponse response,Integer uid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
 
 		ShowCompanyResume spr = new ShowCompanyResume();
 		spr.setUid(uid);
@@ -290,6 +291,30 @@ public class PositionResumeManagementConterller {
 		else if(state.equalsIgnoreCase("s")) return "/resume_manage_send";
 		else if(state.equalsIgnoreCase("e")) return "/resume_manage_employ";
 		else return "/resume_manage_un";
+	}
+
+	/**
+	 *当前用户简历投递情况
+	 * @param model
+	 * @param currentPage
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("positionByCurrentUser")
+	public String currentUser(Model model, HttpSession session,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
+
+		ShowCompanyResume spr = new ShowCompanyResume();
+		spr.setUid((int)session.getAttribute("uid"));
+//		int totalRows = positionResumeManagementService.findCompanyResumeCount(spr);
+//		spr.setTotalRows(totalRows);
+//		if(totalRows>0){
+//			spr.setCurrentPage(currentPage);
+//			spr = positionResumeManagementService.findCompanyResume(spr);
+//			spr.setTotalRows(totalRows);
+//			spr.setCurrentPage(currentPage);
+//		}
+		model.addAttribute("list", spr);
+		return "/user_company_detail";
 	}
 
 }

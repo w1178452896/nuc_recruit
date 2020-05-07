@@ -6,7 +6,7 @@ import java.util.Date;
 
 /**
  * 
- * @author 梁铭新
+ * @author
  */
 public class CompanyResume extends Page {
 	private int uid;

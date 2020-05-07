@@ -56,8 +56,9 @@ public class loginInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		Object name = session.getAttribute("uid");
 		Object name2 = session.getAttribute("cid");
+		Object aName = session.getAttribute("aName");
 		//如果用户已经登录，不拦截
-		if(name != null||name2!=null) {
+		if(name != null||name2!=null||aName!=null) {
 			return true;
 		}
 		//执行这里表示用户身份需要认证，跳转登陆页面,此处重定向有错误，必须请求转发

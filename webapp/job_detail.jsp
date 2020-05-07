@@ -12,11 +12,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
  	<meta name="renderer" content="webkit"> 
 
- 	<meta content="伯乐网" name="keywords"> 
+ 	<meta content="中北大学校园招聘" name="keywords">
 
- 	<meta content="伯乐网" name="description"> 
+ 	<meta content="中北大学校园招聘" name="description">
 
- 	<title>职位详情-伯乐网</title>
+ 	<title>职位详情-中北大学校园招聘</title>
 
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/layout.css">
 	<!-- 最上栏 -->
