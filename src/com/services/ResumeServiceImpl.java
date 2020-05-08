@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mapper.ResumeMapper;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Service("ResumeService")
@@ -78,7 +79,7 @@ public class ResumeServiceImpl implements ResumeService {
 	}
 
 	@Override
-	public void importCreate(CommonsMultipartFile file) throws IOException {
+	public void importCreate(MultipartFile file) throws IOException {
 		String outFileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
 		List<User> userList;
 		try {
@@ -91,6 +92,7 @@ public class ResumeServiceImpl implements ResumeService {
 			readMapHead.put("密码", "password");
 			userList = ExcelUtil.readExcel(outFileName, readMapHead, User.class);
 			for (User user : userList) {
+				user.setState("3");
 				user.setRegisterTime(new Date());
 				userMapper.insertUser(user);
 			}

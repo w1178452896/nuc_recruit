@@ -5,6 +5,7 @@ import java.util.List;
 import com.po.Resume;
 import com.po.ResumeCondition;
 import com.po.StudentInfo;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public interface ResumeService {
@@ -52,7 +53,7 @@ public interface ResumeService {
 
 	File exportExcelTemplate() throws IOException;
 
-	void importCreate(CommonsMultipartFile request)throws IOException;
+	void importCreate(MultipartFile request)throws IOException;
 
 	File exportEmployment() throws Exception;
 }

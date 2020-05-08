@@ -226,6 +226,8 @@
 			<result column="cid" property="cid"/>
 			<result column="position" property="position"/>
 			<result column="workplace" property="workplace"/>
+			<result column="deliveryDate" property="deliveryDate"/>
+			<result column="deadline" property="deadline"/>
 			<result column="classification" property="classification"/>
 			<result column="department" property="department"/>
 			<result column="statement" property="statement"/>

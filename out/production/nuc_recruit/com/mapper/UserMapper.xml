@@ -91,6 +91,6 @@
   </update>
   
   <insert id="insertUser" parameterType="User" useGeneratedKeys="true" keyProperty="uid">
-	 insert into user(password,state,code,mail,registerTime,sno) values(#{password},#{state},#{code},#{mail},#{registerTime},sno=#{sno})
+	 insert into user(password,state,code,mail,registerTime,sno) values(#{password},#{state},#{code},#{mail},#{registerTime},#{sno})
   </insert>
 </mapper>

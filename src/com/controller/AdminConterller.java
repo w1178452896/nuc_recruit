@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.po.*;
+import com.services.AdminService;
 import com.services.CommonService;
 import com.services.PositionResumeManagementService;
 import com.services.ResumeService;
@@ -19,16 +20,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class AdminConterller {
 	@Autowired
 	ResumeService resumeService;
-
+	@Autowired
+	AdminService adminService;
 
 	/**
 	 * 用户信息列表
@@ -50,6 +49,13 @@ public class AdminConterller {
 		model.addAttribute("list", resuemList);
 		model.addAttribute("page", resumeCondition);
 		model.addAttribute("keys",keys);
+		return "/search_resume_result_codition";
+	}
+
+	@RequestMapping("/insertAdmin")
+	public String insertAdmin(Model model,Admin admin) throws Exception{
+		admin.setCreateDate(new Date());
+		adminService.insert(admin);
 		return "/search_resume_result_codition";
 	}
 
@@ -83,7 +89,7 @@ public class AdminConterller {
 	 * @throws Exception
 	 */
 	@RequestMapping("/importUser")
-	public String batchCreate(@RequestParam(value = "file") CommonsMultipartFile request) throws Exception {
+	public String batchCreate(@RequestParam(value = "file") MultipartFile request) throws Exception {
 		resumeService.importCreate(request);
 		return "";
 	}

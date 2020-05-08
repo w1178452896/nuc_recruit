@@ -1,5 +1,7 @@
 package com.po;
 
+import java.util.Date;
+
 /**
  * @Description:
  * @Author: wyf
@@ -19,9 +21,9 @@ public class Admin {
 
     private String realName;
 
-    private String desc;
+    private String descri;
 
-    private String createDate;
+    private Date createDate;
 
     public Integer getId() {
         return id;
@@ -55,19 +57,19 @@ public class Admin {
         this.realName = realName;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescri() {
+        return descri;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescri(String descri) {
+        this.descri = descri;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 }

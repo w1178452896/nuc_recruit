@@ -96,7 +96,7 @@
 		when '5' then '1年以上'
 		else '其他' end) workYear,
 		exceptedSalary,positionApplied,personPic,
-		introduction,exceptedCity
+		introduction,exceptedCity,phone,mail
 		from
 		(select * from
 		( select *,

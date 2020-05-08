@@ -6,13 +6,13 @@
 	</select>
 	
 	<insert id="insert" parameterType="com.po.Admin">
-		insert into admin (username,password,realName,desc,createDate)
-		values (#{username},#{password},#{realName},#{desc},#{createDate}})
+		insert into admin (username,password,realName,descri,createDate)
+		values (#{username},#{password},#{realName},#{descri},#{createDate})
 	</insert>
 	
 	<update id="update" parameterType="com.po.Admin">
 		update admin set username=#{username},password=#{password},realName=#{realName},
-		desc=#{desc},createDate=#{createDate}
+		descri=#{descri},createDate=#{createDate}
 		where id=#{id}
 	</update>
 	

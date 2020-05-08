@@ -417,7 +417,7 @@ public class PositionSearchController {
 	}
 
 	@RequestMapping(value="/delete",method={RequestMethod.POST,RequestMethod.GET})
-	public String delete(Model model, HttpServletRequest request, int pid, HttpSession session, MultipartFile logopic) throws Exception{
+	public String delete(Model model, HttpServletRequest request, int pid, HttpSession session) throws Exception{
 
 		positionService.deleteByPid(pid);
 		return "enterprise_info_success";
