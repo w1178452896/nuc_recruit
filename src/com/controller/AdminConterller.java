@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.common.Page;
 import com.po.*;
 import com.services.AdminService;
 import com.services.CommonService;
@@ -51,6 +52,33 @@ public class AdminConterller {
 		model.addAttribute("keys",keys);
 		return "/search_resume_result_codition";
 	}
+
+	/**
+	 * 用户信息列表
+	 */
+	@RequestMapping("/findAdmin")
+	public String findResume(Model model,@RequestParam(value="page",defaultValue="1") Integer page) throws Exception{
+		Page page1 = new Page();
+		int totalRows = adminService.findCount();
+		List<Admin> admins=new ArrayList<>();
+		System.out.println("totalRows:"+totalRows);
+		if(totalRows>0){
+			page1.setTotalRows(totalRows);
+
+			page1.setCurrentPage(page);
+			admins = adminService.findAdmin(page1);
+		}
+		model.addAttribute("list", admins);
+		return "/search_resume_result_codition";
+	}
+
+	@RequestMapping("/deleteAdmin")
+	public String deleteAdmin(Model model,int id) throws Exception{
+
+		adminService.delete(id);
+		return "/search_resume_result_codition";
+	}
+
 
 	@RequestMapping("/insertAdmin")
 	public String insertAdmin(Model model,Admin admin) throws Exception{
@@ -124,6 +152,8 @@ public class AdminConterller {
 	public String userManage(){
 		return "admin/usermanage";
 	}
+
+
 
 
 

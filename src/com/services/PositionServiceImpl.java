@@ -35,6 +35,11 @@ public class PositionServiceImpl implements PositionService{
 	}
 
 	@Override
+	public List<Position> findPositionByAdmin(Position position) {
+		return positionMapper.findPositionByAdmin(position);
+	}
+
+	@Override
 	public int findPositionByConditionCount(Position position) {
 		return positionMapper.findPositionByConditionCount(position);
 	}

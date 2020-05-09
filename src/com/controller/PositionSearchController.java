@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -173,9 +174,9 @@ public class PositionSearchController {
 	@RequestMapping(value="/findPositionByCondition",method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView findPositionByCondition(HttpServletRequest request,Model model,Position position,String search) throws Exception{
 		ModelAndView mav= new ModelAndView();
-		//String input = null;
+
 		String input=null;
-		//input=new String(request.getParameter("input").getBytes("ISO-8859-1"),"UTF-8" );
+
 		input=request.getParameter("input");
 		System.out.println("search"+search);
 		System.out.println("p"+position.getPosition());
@@ -421,6 +422,97 @@ public class PositionSearchController {
 
 		positionService.deleteByPid(pid);
 		return "enterprise_info_success";
+	}
+
+	@RequestMapping(value="/findPositionByAdmin",method={RequestMethod.POST,RequestMethod.GET})
+	public String findPositionByAdmin(HttpServletRequest request,Model model,Position position,@RequestParam(value="page",defaultValue="1") Integer page) throws Exception{
+
+		List<Position> positionList = new ArrayList<Position>();
+		List<PositionAndCompany> positionAndCompanyList = new ArrayList<PositionAndCompany>();
+		if(position.getWorkplace()!=null){
+			if(position.getWorkplace().equals("全国")){
+				position.setWorkplace(null);
+			}
+		}
+		if(position.getSalary()!=null){
+			if(position.getSalary().equals("1")){
+				position.setSalary(null);
+			}
+		}
+		if(position.getEduRequest()!=null){
+			if(position.getEduRequest().equals("6")){
+				position.setEduRequest(null);
+			}
+		}
+		if(position.getExperience()!=null){
+			if(position.getExperience().equals("6")){
+				position.setExperience(null);
+			}
+		}
+
+		int totalRows = positionService.findPositionByConditionCount(position);
+		System.out.println("totalRows:"+totalRows);
+		if(totalRows>0) {
+			position.setTotalRows(totalRows);
+			position.setCurrentPage(page);
+			positionList = positionService.findPositionByAdmin(position);
+			Position positionTmp = new Position();
+			CompanyInfo companyInfo = new CompanyInfo();
+
+			for (int i = 0; i < positionList.size(); i++) {
+				PositionAndCompany positionAndCompany = new PositionAndCompany();
+				positionTmp = positionList.get(i);
+
+				if (positionTmp.getEduRequest().equals("1")) {
+					positionTmp.setEduRequest("大专");
+				} else if (positionTmp.getEduRequest().equals("2")) {
+					positionTmp.setEduRequest("本科");
+				} else if (positionTmp.getEduRequest().equals("3")) {
+					positionTmp.setEduRequest("硕士");
+				} else if (positionTmp.getEduRequest().equals("4")) {
+					positionTmp.setEduRequest("博士");
+				} else {
+					positionTmp.setEduRequest("不限");
+				}
+
+				if (positionTmp.getExperience().equals("1")) {
+					positionTmp.setExperience("无");
+				} else if (positionTmp.getExperience().equals("2")) {
+					positionTmp.setExperience("1-3月");
+				} else if (positionTmp.getExperience().equals("3")) {
+					positionTmp.setExperience("3-6月");
+				} else if (positionTmp.getExperience().equals("4")) {
+					positionTmp.setExperience("6-12月");
+				} else if (positionTmp.getExperience().equals("5")) {
+					positionTmp.setExperience("1年以上");
+				} else {
+					positionTmp.setExperience("不要求");
+				}
+
+				if (positionTmp.getSalary().equals("1")) {
+					positionTmp.setSalary("不限");
+				} else if (positionTmp.getSalary().equals("2")) {
+					positionTmp.setSalary("5K以下");
+				} else if (positionTmp.getSalary().equals("3")) {
+					positionTmp.setSalary("5K-10K");
+				} else if (positionTmp.getSalary().equals("4")) {
+					positionTmp.setSalary("10K-15K");
+				} else if (positionTmp.getSalary().equals("5")) {
+					positionTmp.setSalary("15K-20K");
+				} else if (positionTmp.getSalary().equals("6")) {
+					positionTmp.setSalary("20K以上");
+				}
+
+				companyInfo = companyInfoService.findCompanyInfo(positionTmp.getCid());
+				positionAndCompany.setPosition(positionTmp);
+				positionAndCompany.setCompanyName(companyInfo.getCompanyName());
+				positionAndCompany.setIndustry(companyInfo.getIndustry());
+				positionAndCompanyList.add(positionAndCompany);
+			}
+		}
+		model.addAttribute("positionAndCompanyList", positionAndCompanyList);
+
+		return "";
 	}
 
 }

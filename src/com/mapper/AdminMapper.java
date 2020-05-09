@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.common.Page;
 import com.po.Admin;
 
 import java.util.List;
@@ -24,5 +25,10 @@ public interface AdminMapper {
     public int update(Admin admin);
 
     public int insert(Admin admin);
+
+    public int delete(int id);
+
+    public int findCount();
+    public List<Admin> findAdmin(Page page);
 
 }

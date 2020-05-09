@@ -1,5 +1,6 @@
 package com.services;
 
+import com.common.Page;
 import com.mapper.AdminMapper;
 import com.mapper.CompanyInfoMapper;
 import com.po.Admin;
@@ -37,5 +38,20 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void insert(Admin admin) {
 		adminMapper.insert(admin);
+	}
+
+	@Override
+	public void delete(int id) {
+		adminMapper.delete(id);
+	}
+
+	@Override
+	public int findCount() {
+		return adminMapper.findCount();
+	}
+
+	@Override
+	public List<Admin> findAdmin(Page page) {
+		return adminMapper.findAdmin(page);
 	}
 }

@@ -64,6 +64,17 @@
 <!-- 	order by releaseDate desc
 	limit #{startIndex},#{pageSize}  -->
 </select>
+
+	<!--根据关键词，地点，工作经验，学历要求，薪水查找简历  -->
+	<select id="findPositionByAdmin" parameterType="Position" resultType="Position">
+		select * from
+		<include refid="FPBCC"/>
+			order by releaseDate desc
+            limit #{startIndex},#{pageSize}
+	</select>
+
+
+
 <select id="findPositionByConditionCount" parameterType="Position" resultType="int">
    select count(*) from
    <include refid="FPBCC"/>

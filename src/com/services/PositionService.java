@@ -31,6 +31,7 @@ public interface PositionService {
 	 * @return List
 	 */
 	public List<Position> findPositionByCondition(Position position);
+	public List<Position> findPositionByAdmin(Position position);
 	/**
 	 * 根据关键词，地点，工作经验，学历要求，薪水查找简历 返回总行数
 	 * @param position

@@ -19,7 +19,21 @@
 	<select id="findByUserName" parameterType="String" resultType="com.po.Admin">
 		select * from admin where username=#{username}
 	</select>
-    
+
+	<delete id="delete" parameterType="int">
+		delete from admin where id=#{id}
+	</delete>
+
+	<select id="findCount" parameterType="Admin" resultType="int">
+	select count(*) from admin where username!='admin'
+	</select>
+
+	<select id="findAdmin" parameterType="com.common.Page" resultType="com.po.Admin">
+		select * from admin
+		where username!='admin'
+		order by createDate desc
+		limit #{startIndex},#{pageSize}
+	</select>
 
   	
 </mapper>
