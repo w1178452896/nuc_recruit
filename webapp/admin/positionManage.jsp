@@ -40,33 +40,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			/*设置页数*/
 			$("#page").blur(function(){
 				var page = $(this).val();
-				var url = pp + "userManage.action?page="+page;
+				var url = pp + "positionManage.action?page="+page;
 				$("#pageForm").attr("action",url);
 				$("#pageForm").submit();
 			});
-			/*发送导入模板*/
-			$("#submitFile").click(function(){
-				var aa = pp+'importUser.action';
-				$("#sendUserFile").attr("action",aa);
+			/*删除*/
+			$("#deleteBtn").click(function(){
+				var aa = pp+'deletePositionByIds.action';
+				var idArr = [];
+				$("#result input[type=checkbox]:checked").each(function(){
+					idArr.push($(this).val());
+				});
+				$("#idsOfDelete").val(idArr);
+				$("#deleteForm").attr("action",aa);
 				//alert($("#send").serialize());
-				$("#sendUserFile").submit();
-			});
-			/*导出导入模板*/
-			$("#template").click(function(){
-				var aa = pp+'template.action';
-				window.location.href =aa;
-			});
-			/*导出用户就业情况*/
-			$("#exportEmployment").click(function(){
-				var aa = pp+'exportEmployment.action';
-				window.location.href =aa;
+				$("#deleteForm").submit();
 			});
 
 		});
-		function keySearch(searchInput) {
-			var url = pp + "userManage.action?keys="+searchInput.value;
-			location.href = url;
-		}
+		// function keySearch(searchInput) {
+		// 	var url = pp + "userManage.action?keys="+searchInput.value;
+		// 	location.href = url;
+		// }
 	</script>
 	</head>
   
@@ -88,16 +83,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="inner">
 				<ul class="lg_tnav_wrap">
 					<li>
-						<a href="${pageContext.request.contextPath}/userManage.action" class="current" id="5i00"    >学生管理</a>
+						<a href="${pageContext.request.contextPath}/userManage.action" class="" id="5i00"    >学生管理</a>
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/findAdmin.action" class="" id="5i01"    >管理员管理</a>
 					</li>
 <%--					<li>--%>
-<%--						<a href="${pageContext.request.contextPath}/.action" class="" id="5i01"    >企业管理</a>--%>
+<%--						<a href="${pageContext.request.contextPath}/userManage.action" class="" id="5i01"    >企业管理</a>--%>
 <%--					</li>--%>
 					<li>
-						<a href="${pageContext.request.contextPath}/positionManage.action" class="" id="5i01"    >职位管理</a>
+						<a href="${pageContext.request.contextPath}/positionManage.action" class="current" id="5i01"    >职位管理</a>
 					</li>
 				</ul>
 			</div>
@@ -106,27 +101,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="main-content">
 		<form action="" enctype="multipart/form-data" method="post">
 			<div class="content">
-				<div style="width:200px;padding: 0px;margin: 0px 0px 10px"><input value="${keys}" onchange="keySearch(this)" placeholder="关键字查找" type="text"  class="form-control" id="searchInput"></div>
+<%--				<div style="width:200px;padding: 0px;margin: 0px 0px 10px"><input value="${keys}" onchange="keySearch(this)" placeholder="关键字查找" type="text"  class="form-control" id="searchInput"></div>--%>
 				<table class="table table-hover ">
 					<thead>
 					<tr>
 						<th></th>
-						<th>学生名称</th>
-						<th>学号</th>
-						<th>籍贯</th>
-						<th>手机号码</th>
+						<th>职位名称</th>
+						<th>公司名称</th>
+						<th>公司类型</th>
+						<th>工作地</th>
+						<th>职位类别</th>
+						<th>部门名称</th>
+						<th>薪资</th>
+						<th>实习经历</th>
+						<th>学历要求</th>
 						<th>邮箱</th>
+						<th>发布时间</th>
+						<th>截止时间</th>
+						<th>描述</th>
 					</tr>
 					</thead>
 					<tbody id="result">
-					<c:forEach items="${list}" var="student">
+					<c:forEach items="${list}" var="company">
 						<tr>
-							<td><input type="checkbox" name="chkItem" value="${student.uid}"/></td>
-							<td>${student.name}</td>
-							<td>${student.sno}</td>
-							<td>${student.nativePlace}</td>
-							<td>${student.phone}</td>
-							<td>${student.mail}</td>
+							<td><input type="checkbox" name="chkItem" value="${company.position.pid}"/></td>
+							<td>${company.position.position}</td>
+							<td>${company.companyName}</td>
+							<td>${company.industry}</td>
+							<td>${company.position.workplace}</td>
+							<td>${company.position.classification}</td>
+							<td>${company.position.department}</td>
+							<td>${company.position.salary}</td>
+							<td>${company.position.experience}</td>
+							<td>${company.position.eduRequest}</td>
+							<td>${company.position.email}</td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${company.position.releaseDate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${company.position.deadline}" /></td>
+							<td>${company.position.statement}</td>
 						</tr>
 					</c:forEach>
 					</tbody>
@@ -134,43 +145,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="page" style="margin-bottom: 40px"> &nbsp;&nbsp;
 				<input type="checkbox" id="checkedAll">&nbsp;全选&nbsp;&nbsp;&nbsp;
-				<a href="${basePath}userManage.action?page=1">首页</a>&nbsp;&nbsp;&nbsp;
-				<a href="${basePath}userManage.action?page=${totalPage}">尾页</a>&nbsp;&nbsp;&nbsp;
+				<a href="${basePath}positionManage.action?page=1">首页</a>&nbsp;&nbsp;&nbsp;
+				<a href="${basePath}positionManage.action?page=${totalPage}">尾页</a>&nbsp;&nbsp;&nbsp;
 				第${currentPage}/${totalPage}页&nbsp;&nbsp;&nbsp;去&nbsp;&nbsp;
 				<input type="text" style="width: 40px;text-align:center;" id="page" value="">&nbsp;&nbsp;页
 				<br><br>
 				<ul class="nav nav-pills">
-					<li  class="active"><a href="javascript:void(0)"  data-toggle="modal" id="template">导出下载模板</a></li>
-					<li  class="active"><a href="javascript:void(0)" id="sendInvite" data-toggle="modal" data-target="#importUserDialog">导入用户</a></li>
-					<li class="active"><a href="javascript:void(0)" id="exportEmployment">导出就业信息</a></li>
+					<li  class="active"><a href="javascript:void(0)"  data-toggle="modal" id="deleteBtn">删除</a></li>
 				</ul>
 			</div>
 		</form>
 
-		<div class="modal fade" id="importUserDialog" tabindex="-1" role="dialog" aria-labelledby="sendToEmail">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title">导入用户</h4>
-					</div>
-					<div class="modal-body">
-						<form action="" method="post" id="sendUserFile" enctype="multipart/form-data">
-							<div class="form-group">
-								<label for="recipient-name" class="control-label">请选择文件:</label>
-								<input type="file" name="file" id="importUser"/>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary" data-dismiss="modal" id="submitFile">发送</button>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<form action="" method="post" id="pageForm"></form>
+		<form action="" method="post" id="deleteForm">
+			<input type="hidden" id="idsOfDelete" name="ids">
+		</form>
 	</div>
 
 </body>

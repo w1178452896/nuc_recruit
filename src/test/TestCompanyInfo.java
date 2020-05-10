@@ -1,7 +1,7 @@
 package test;
 /**
  * 
- * @author 梁铭新
+ * @author
  */
 public class TestCompanyInfo {
 //	 private SqlSessionFactory sqlSessionFactory;

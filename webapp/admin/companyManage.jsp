@@ -91,10 +91,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<a href="${pageContext.request.contextPath}/userManage.action" class="current" id="5i00"    >学生管理</a>
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/findAdmin.action" class="" id="5i01"    >管理员管理</a>
+						<a href="${pageContext.request.contextPath}/userManage.action" class="" id="5i01"    >管理员管理</a>
 					</li>
 <%--					<li>--%>
-<%--						<a href="${pageContext.request.contextPath}/.action" class="" id="5i01"    >企业管理</a>--%>
+<%--						<a href="${pageContext.request.contextPath}/userManage.action" class="" id="5i01"    >企业管理</a>--%>
 <%--					</li>--%>
 					<li>
 						<a href="${pageContext.request.contextPath}/positionManage.action" class="" id="5i01"    >职位管理</a>

@@ -10,6 +10,7 @@ import net.sf.json.util.JSONStringer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -69,22 +70,31 @@ public class AdminConterller {
 			admins = adminService.findAdmin(page1);
 		}
 		model.addAttribute("list", admins);
-		return "/search_resume_result_codition";
+		model.addAttribute("currentPage", page1.getCurrentPage());
+		model.addAttribute("totalPage",page1.getTotalPage());
+		return "/admin/adminManage";
 	}
 
 	@RequestMapping("/deleteAdmin")
-	public String deleteAdmin(Model model,int id) throws Exception{
-
-		adminService.delete(id);
-		return "/search_resume_result_codition";
+	@Transactional
+	public String deleteAdmin(HttpServletResponse response,Model model,String ids) throws Exception{
+		if(ids!=null && !ids.equals("")){
+			String[] idArr = ids.split(",");
+			for (String id : idArr) {
+				adminService.delete(Integer.valueOf(id));
+			}
+		}
+		response.sendRedirect("findAdmin.action");
+		return null;
 	}
 
 
 	@RequestMapping("/insertAdmin")
-	public String insertAdmin(Model model,Admin admin) throws Exception{
+	public String insertAdmin(HttpServletResponse response,Model model,Admin admin) throws Exception{
 		admin.setCreateDate(new Date());
 		adminService.insert(admin);
-		return "/search_resume_result_codition";
+		response.sendRedirect("findAdmin.action");
+		return null;
 	}
 
 	/**
@@ -119,7 +129,7 @@ public class AdminConterller {
 	@RequestMapping("/importUser")
 	public String batchCreate(@RequestParam(value = "file") MultipartFile request) throws Exception {
 		resumeService.importCreate(request);
-		return "";
+		return "/admin/usermanage";
 	}
 
 	/**
@@ -149,8 +159,26 @@ public class AdminConterller {
 	 * 用户管理页面
 	 */
 	@RequestMapping("/userManage")
-	public String userManage(){
-		return "admin/usermanage";
+	public String userManage(Model model,String keys,ResumeCondition resumeCondition,@RequestParam(value="page",defaultValue="1") Integer page) throws Exception{
+		String [] arra={""};
+		List<StudentInfo> resuemList = new ArrayList<StudentInfo>();
+		if (keys!=null && !keys.equals("")){
+			arra = keys.split(" ");
+		}
+		resumeCondition.setKey(arra);
+		int totalRows = resumeService.findResumeCount(resumeCondition);
+		System.out.println("totalRows:"+totalRows);
+		if(totalRows>0){
+			resumeCondition.setTotalRows(totalRows);
+
+			resumeCondition.setCurrentPage(page);
+			resuemList = resumeService.findStudentInfo(resumeCondition);
+		}
+		model.addAttribute("list", resuemList);
+		model.addAttribute("currentPage", resumeCondition.getCurrentPage());
+		model.addAttribute("totalPage",resumeCondition.getTotalPage());
+		model.addAttribute("keys",keys);
+		return "/admin/usermanage";
 	}
 
 

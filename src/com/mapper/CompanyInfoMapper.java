@@ -3,7 +3,7 @@ package com.mapper;
 import com.po.CompanyInfo;
 /**
  * 
- * @author 梁铭新
+ * @author
  */
 public interface CompanyInfoMapper {
 

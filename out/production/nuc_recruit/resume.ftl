@@ -1362,7 +1362,7 @@ WXMAAA7EAAAOxAGVKw4bAAAAIElEQVQ4je3BgQAAAAzDsJ1g/lJ1mcFFmhywLZIkKWn7NjcFbFC9
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
 	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--简历来自：--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
-	w:val="18" /><w:sz-cs w:val="18" /><w:lang w:fareast="ZH-CN" /></w:rPr><w:t><#--伯乐--></w:t></w:r><w:r><w:rPr><w:rFonts
+	w:val="18" /><w:sz-cs w:val="18" /><w:lang w:fareast="ZH-CN" /></w:rPr><w:t><#--中北大学--></w:t></w:r><w:r><w:rPr><w:rFonts
 	w:hint="fareast" /><w:i /><w:i-cs /><w:color w:val="808080" /><w:sz
 	w:val="18" /><w:sz-cs w:val="18" /></w:rPr><w:t><#--网 - --></w:t></w:r><w:r><w:rPr><w:rStyle
 	w:val="a13" /><w:rFonts w:hint="fareast" /><w:i /><w:i-cs /><w:color

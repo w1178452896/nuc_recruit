@@ -7,7 +7,7 @@ import com.mapper.CompanyInfoMapper;
 import com.po.CompanyInfo;
 /**
  * 
- * @author 梁铭新
+ * @author
  *
  */
 @Service("CompanyInfoService")

@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mapper.ResumeMapper">
 
- <select id="findResumeCountfindAllResume" parameterType="int" resultType="Resume">
+ <select id="findAllResume" parameterType="int" resultType="Resume">
   	select * from resume where uid=#{uid}
  </select>
  
  <insert id="insertResume" parameterType="Resume">
-	 insert into resume(uid,name,sex,nativePlace,birthday,education,workYear,phone,idCard,mail,city,personPic,introduction,positionApplied,exceptedCity,exceptedSalary,postscript) 
+	 insert into resume(uid,name,sex,nativePlace,birthday,education,workYear,phone,idCard,mail,city,personPic,introduction,positionApplied,exceptedCity,exceptedSalary,postscript)
 	 values(#{uid},#{name},#{sex},#{nativePlace},#{birthday},#{education},#{workYear},#{phone},#{idCard},#{mail},#{city},#{personPic},#{introduction},#{positionApplied},#{exceptedCity},#{exceptedSalary},#{postscript})
  </insert>
  
@@ -96,7 +96,7 @@
 		when '5' then '1年以上'
 		else '其他' end) workYear,
 		exceptedSalary,positionApplied,personPic,
-		introduction,exceptedCity,phone,mail
+		introduction,exceptedCity,phone,tmp.mail
 		from
 		(select * from
 		( select *,

@@ -305,15 +305,17 @@ public class PositionResumeManagementConterller {
 
 		ShowCompanyResume spr = new ShowCompanyResume();
 		spr.setUid((int)session.getAttribute("uid"));
-//		int totalRows = positionResumeManagementService.findCompanyResumeCount(spr);
-//		spr.setTotalRows(totalRows);
-//		if(totalRows>0){
-//			spr.setCurrentPage(currentPage);
-//			spr = positionResumeManagementService.findCompanyResume(spr);
-//			spr.setTotalRows(totalRows);
-//			spr.setCurrentPage(currentPage);
-//		}
-		model.addAttribute("list", spr);
+		int totalRows = positionResumeManagementService.findCompanyResumeCount(spr);
+		spr.setTotalRows(totalRows);
+		if(totalRows>0){
+			spr.setCurrentPage(currentPage);
+			spr = positionResumeManagementService.findCompanyResume(spr);
+			spr.setTotalRows(totalRows);
+			spr.setCurrentPage(currentPage);
+		}
+		model.addAttribute("list", spr.getCompanyResume());
+		model.addAttribute("totalPage", spr.getTotalPage());
+		model.addAttribute("currentPage", spr.getCurrentPage());
 		return "/user_company_detail";
 	}
 

@@ -1,7 +1,7 @@
 package com.po;
 /**
  * 
- * @author 梁铭新
+ * @author
  */
 public class CompanyInfo {
 	private int ciid;

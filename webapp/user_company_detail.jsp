@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			/*设置页数*/
 			$("#page").blur(function(){
 				var page = $(this).val();
-				var url = pp + "findPositionResume.action?currentPage="+page+"&pid="+ pid +"&state=w";
+				var url = pp + "positionByCurrentUser.action?currentPage="+page;
 				$("#pageForm").attr("action",url);
 				$("#pageForm").submit();
 			});
@@ -95,19 +95,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<th>职位名称</th>
 						<th>投递情况</th>
 						<th>投递日期</th>
+						<th>截止日期</th>
 					</tr>
 					</thead>
 					<tbody id="result">
-					<c:forEach items="${resume.positionResume}" var="positionResume">
+					<c:forEach items="${list}" var="company">
 						<tr>
-							<td><input type="checkbox" name="chkItem" value="${positionResume.uid}"/></td>
-							<td><a href="${pageContext.request.contextPath}/user/findMyResume.action?type=1&id=${positionResume.uid}">${positionResume.name}</a></td>
-							<td>${resume.position}</td>
-							<td>${positionResume.sex}</td>
-							<td>${positionResume.workYear}</td>
-							<td>${positionResume.education}</td>
+							<td><input type="checkbox" name="chkItem" value="${company.uid}"/></td>
+							<td>${company.companyName}</td>
+							<td>${company.position}</td>
+							<c:if test="${company.state eq 'w'}">
+								<td>待处理</td>
+							</c:if>
+							<c:if test="${company.state eq 's'}">
+								<td>已发送邀请</td>
+							</c:if>
+							<c:if test="${company.state eq 'r'}">
+								<td>不合适</td>
+							</c:if>
+							<c:if test="${company.state eq 'e'}">
+								<td>聘用</td>
+							</c:if>
+
 							<td>
-								<fmt:formatDate pattern="yyyy-MM-dd" value="${positionResume.deliveryDate}" />
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${company.deliveryDate}" />
+							</td>
+							<td>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${company.deadline}" />
 							</td>
 						</tr>
 					</c:forEach>
@@ -116,13 +130,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="page" style="margin-bottom: 40px"> &nbsp;&nbsp;
 				<input type="checkbox" id="checkedAll">&nbsp;全选&nbsp;&nbsp;&nbsp;
-				<a href="${basePath}findPositionResume.action?currentPage=1&pid=${resume.pid}&state=w">首页</a>&nbsp;&nbsp;&nbsp;
-				<a href="${basePath}findPositionResume.action?currentPage=${resume.totalPage}&pid=${resume.pid}&state=w">尾页</a>&nbsp;&nbsp;&nbsp;
-				第${resume.currentPage}/${resume.totalPage}页&nbsp;&nbsp;&nbsp;去&nbsp;&nbsp;
+				<a href="${basePath}positionByCurrentUser.action?currentPage=1">首页</a>&nbsp;&nbsp;&nbsp;
+				<a href="${basePath}positionByCurrentUser.action?currentPage=${totalPage}">尾页</a>&nbsp;&nbsp;&nbsp;
+				第${currentPage}/${totalPage}页&nbsp;&nbsp;&nbsp;去&nbsp;&nbsp;
 				<input type="text" style="width: 40px;text-align:center;" id="page" value="">&nbsp;&nbsp;页
 				<br><br>
 			</div>
 		</form>
+
+		<form action="" method="post" id="pageForm"></form>
 
 	</div>
 

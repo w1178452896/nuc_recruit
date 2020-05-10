@@ -5,7 +5,7 @@ import java.util.List;
 import com.po.Company;
 /**
  * 
- * @author 梁铭新
+ * @author
  */
 public interface CompanyMapper {
 	/**
