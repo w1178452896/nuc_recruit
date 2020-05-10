@@ -92,13 +92,12 @@ a {
     height: 50px;
     line-height: 50px; }
 
-.sign-left, .sign-right {
-  display: inline;
-  float: left;
+.sign-left {
   padding: 20px 20px 50px; }
 
 .sign-left {
-  width: 310px; }
+  width: 310px;
+  margin: 0 auto}
   .sign-left input {
     box-sizing: content-box;
     border: 1px solid #e0dede;
@@ -187,32 +186,6 @@ a {
     -moz-border-radius: 9px;
     border: 1px solid #f3c7c9; }
 
-.sign-right {
-  width: 210px;
-  text-align: center; }
-
-  .sign-right img {
-    width: 80px;
-    height: 80px;
-    border: none;
-    border-radius: 25px; }
-
-.sign-right .gotoR{
-    display:inline-block; 
-    margin-top: 20px;
-    width: 140px;
-    height: 25px;
-    line-height: 25px;
-    font-size: 15px;
-    color: #fff;
-    border: 1px solid #f3c7c9;
-    border-radius: 5px;
-    webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    background-color: #f3c7c9;
-    cursor: pointer;
-    text-decoration: none;
-}
 
 .footer {
   margin-top: 50px;

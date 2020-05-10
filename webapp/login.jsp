@@ -73,21 +73,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<form action="" method="post" id="reroateForm"></form>
 			<p class="account">还没有账号？<a href="register.jsp">立即注册<span class="icon-go">&rarr;</span></a></p>
 		</div>
-		<!-- 登录框右边 -->
-		<div class="sign-right">
-			<div>
-				<p>使用以下账号直接登录</p>
-				<!-- <a href="javascript:void(0)" class="icon-weibo">
-					<img alt="微博" src="images/sign/icon-weibo.png">
-				</a> -->
-				<a href="${pageContext.request.contextPath}/loginByQq.action" class="icon-qq">
-					<img alt="qq" src="images/sign/icon-qq.png">
-				</a>
-				<!-- <a href="javascript:void(0)" class="icon-weichat">
-					<img alt="微信" src="images/sign/icon-wechat.png">
-				</a> -->
-			</div>
-		</div>
 	</section>
 	<footer>
 		<p class="footer">——中北大学校园招聘——</p>
