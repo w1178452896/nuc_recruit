@@ -240,13 +240,14 @@ public class PositionResumeManagementConterller {
 	 * @throws Exception
 	 */
 	@RequestMapping("employ")
-	public String employ(Model model,HttpServletResponse response,PersonalResume personalResume,Integer pid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage) throws Exception{
+	public String employ(Model model,HttpServletResponse response,PersonalResume personalResume,Integer pid,String state,@RequestParam(value="currentPage" , defaultValue="1")Integer currentPage,String comment) throws Exception{
 		System.out.println(personalResume.getIdArr().size());
 		System.out.println(pid);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pid",pid);
 		map.put("uidList", personalResume.getIdArr());
 		map.put("state", "e");
+		map.put("comment",comment);
 		try {
 			positionResumeManagementService.updatePositionResume(map);
 		} catch (Exception e) {

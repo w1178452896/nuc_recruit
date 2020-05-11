@@ -163,7 +163,7 @@
 	</resultMap>
 	<!-- 更新简历状态 -->
 	<update id="updatePositionResume" parameterType="Map">
-		update position_resume set state=#{state} where uid in
+		update position_resume set state=#{state},comment=#{comment} where pid=#{pid} and uid in
 		 <foreach collection="uidList" item="item" open="(" separator="," close=")">
          	#{item}
         </foreach>
@@ -215,6 +215,7 @@
 		<result column="sex" property="sex"/>
 		<result column="position" property="position"/>
 		<result column="companyname" property="companyname"/>
+		<result column="comment" property="comment"/>
 	</resultMap>
 
 	<resultMap type="com.po.ShowCompanyResume" id="CompanyByUidMap">

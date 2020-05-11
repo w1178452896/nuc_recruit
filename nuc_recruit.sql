@@ -536,3 +536,8 @@ INSERT INTO `user` VALUES (00000028, NULL, '123456', '2', '601647957@qq.com', 'b
 INSERT INTO `user` VALUES (00000032, NULL, 'w111111', '3', '1178452896@qq.com', '0be264a74f780e42aeaa7302165ff4fc', '2020-03-21', '1111111111');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+alter table position_resume ADD comment varchar(30)
+
+
+

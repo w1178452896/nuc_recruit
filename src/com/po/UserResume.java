@@ -9,6 +9,7 @@ public class UserResume{
 	private String sex;
 	private String position;
 	private String companyname;
+	private String comment;
 
 	public UserResume() {
 	}
@@ -59,5 +60,13 @@ public class UserResume{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }

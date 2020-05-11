@@ -111,7 +111,7 @@ public class ResumeServiceImpl implements ResumeService {
 		headMap.put("sex", "性别");
 		headMap.put("companyname", "公司");
 		headMap.put("position", "职位");
-
+		headMap.put("comment", "公司评价");
 		File os = null;
 		try {
 			os = ExcelUtil.exportExcel(headMap, userResume);
