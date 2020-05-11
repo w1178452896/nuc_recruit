@@ -58,7 +58,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 $("#result input[type=checkbox]:checked").each(function(){
                     idArr.push($(this).val());
                 });
+
                 $("#sendTo").val(idArr);
+                $("#comment").val(document.getElementById("commentCopy").value);
                 $("#send").attr("action",aa);
                 //alert($("#send").serialize());
                 $("#send").submit();
@@ -196,7 +198,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <br><br>
             <ul class="nav nav-pills">
                 <li class="active"><a href="javascript:void(0)" id="improper">标记为不合适</a></li>
-                <li class="active"><a href="javascript:void(0)" id="employ">聘用</a></li>
+                <li class="active"><a href="javascript:void(0)" id="employDialogBtn" data-toggle="modal" data-target="#employDialog">聘用</a></li>
                 <li class="active"><a href="javascript:void(0)" id="sendToComputer">保存到我的电脑</a></li>
                 <li class="active"><a href="javascript:void(0)" id="sendToEmail" data-toggle="modal" data-target="#sendToEmailModal">转发简历到邮箱</a></li>
             </ul>
@@ -235,8 +237,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     <!-- 转发简历到邮箱 end -->
-    
-    <form action="" method="post" id="pageForm"></form> 
+    <!-- 学生情况反馈 -->
+    <div class="modal fade" id="employDialog"  role="dialog" aria-labelledby="employDialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">学生情况反馈</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">请填写学生情况:</label>
+                            <textarea class="form-control" id="commentCopy"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="employ">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="" method="post" id="pageForm"></form>
     
     <!--转发到邮箱form-->
     <form action="" method="post" id="send">
@@ -246,7 +270,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <input type="hidden" id="message" name="message">
         <input type="hidden" id="subject" name="subject">
         <input type="hidden" id="state" name="state" value="s">
-    </form> 
+        <textarea hidden  name="comment" id="comment"></textarea>
+    </form>
 </div>
 
 </body>
